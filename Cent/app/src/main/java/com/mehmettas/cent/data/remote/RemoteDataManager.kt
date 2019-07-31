@@ -1,6 +1,7 @@
 package com.mehmettas.cent.data.remote
 
 import com.mehmettas.cent.data.remote.model.symbol.Symbol
+import com.mehmettas.cent.data.remote.model.symbol.SymbolResponse
 import com.mehmettas.cent.data.remote.network.RemoteDataException
 import com.mehmettas.cent.data.remote.network.ResultWrapper
 import com.mehmettas.cent.data.remote.service.ICurrencyModelService
@@ -13,7 +14,7 @@ class RemoteDataManager(
     private val modelService:ICurrencyModelService
     ): IRemoteDataManager {
 
-    override suspend fun getCurrenciesWithDetail(): ResultWrapper<Symbol> =
+    override suspend fun getCurrenciesWithDetail(): ResultWrapper<SymbolResponse> =
         withContext(Dispatchers.IO) {
             resultWrapper(modelService.getCurrenciesWithDetail())
         }

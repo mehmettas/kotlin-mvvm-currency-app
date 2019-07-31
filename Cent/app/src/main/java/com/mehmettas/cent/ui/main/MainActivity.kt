@@ -1,13 +1,28 @@
 package com.mehmettas.cent.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import com.mehmettas.cent.R
+import com.mehmettas.cent.data.remote.model.symbol.Symbol
+import com.mehmettas.cent.ui.base.BaseActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity: BaseActivity(), IMainNavigator {
+    private val viewModel by viewModel<MainViewModel>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override val layoutId: Int?
+        get() = R.layout.activity_main
+
+    override fun initNavigator() {
+        viewModel.setNavigator(this)
+    }
+
+    override fun initUI() {
+        viewModel.getCurrencySymbolDetail()
+    }
+
+    override fun initListener() {
+
+    }
+
+    override fun currencyDetailSuccess(data: Symbol) {
     }
 }

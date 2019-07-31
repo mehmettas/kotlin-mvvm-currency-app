@@ -1,0 +1,36 @@
+package com.mehmettas.cent.data.remote
+
+import com.mehmettas.cent.data.remote.model.symbol.Symbol
+import com.mehmettas.cent.data.remote.network.RemoteDataException
+import com.mehmettas.cent.data.remote.network.ResultWrapper
+import com.mehmettas.cent.data.remote.service.ICurrencyModelService
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import retrofit2.Response
+
+class RemoteDataManager(
+    private val modelService:ICurrencyModelService
+    ): IRemoteDataManager {
+
+    override suspend fun getCurrenciesWithDetail(): ResultWrapper<Symbol> =
+        withContext(Dispatchers.IO) {
+            resultWrapper(modelService.getCurrenciesWithDetail())
+        }
+
+
+
+    private suspend inline fun <reified T : Any> resultWrapper(request: Deferred<Response<T>>): ResultWrapper<T> {
+        return try {
+            val response = request.await()
+            if (response.isSuccessful) {
+                ResultWrapper.Success(response.body()!!)
+            } else {
+                ResultWrapper.Error(RemoteDataException(response.errorBody()))
+            }
+        } catch (ex: Throwable) {
+            ResultWrapper.Error(RemoteDataException(ex))
+        }
+    }
+
+}

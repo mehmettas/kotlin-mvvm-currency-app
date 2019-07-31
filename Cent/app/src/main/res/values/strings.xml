@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Cent</string>
+    <string name="select_base">Select Base Currency</string>
+</resources>

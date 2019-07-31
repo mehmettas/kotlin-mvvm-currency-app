@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="20dp"
+            android:background="@drawable/bg_dialog"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/clMain"
+            android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/start"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".1"
+                android:layout_height="wrap_content"/>
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/end"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".9"
+                android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgIconDialog"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:srcCompat="@drawable/ic_problem"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="32dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtMessageDialog"
+                android:gravity="center_horizontal"
+                android:textSize="13sp"
+                android:text="Message"
+                android:textColor="@android:color/black"
+                android:ems="13"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                app:layout_constraintTop_toBottomOf="@+id/imgIconDialog"
+                app:layout_constraintEnd_toEndOf="@id/end"
+                app:layout_constraintStart_toStartOf="@id/start"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+                android:visibility="gone"
+                android:textSize="13sp"
+                android:id="@+id/btnOkDialog"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:background="@drawable/bg_button"
+                android:text="Tamam"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="40dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintTop_toBottomOf="@+id/txtMessageDialog"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="32dp"/>
+
+        <LinearLayout
+                android:visibility="visible"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:id="@+id/lnNegative"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintTop_toBottomOf="@+id/txtMessageDialog"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="32dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                    android:textSize="13sp"
+                    android:id="@+id/btnNegativeDialog"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:background="@drawable/bg_button_negative"
+                    android:text="Vazgeç"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_height="50dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                    android:layout_marginLeft="8dp"
+                    android:textSize="13sp"
+                    android:id="@+id/btnPositiveDialog"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:background="@drawable/bg_button"
+                    android:text="Çıkış Yap"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:scaleType="center"
+            app:srcCompat="@drawable/ic_close"
+            android:id="@+id/imgCloseDialog"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="3dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@id/clMain"
+            app:layout_constraintEnd_toEndOf="@id/clMain"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

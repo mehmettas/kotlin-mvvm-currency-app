@@ -7,6 +7,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity: BaseActivity(), IMainNavigator {
     private val viewModel by viewModel<MainViewModel>() // inject the viewModel
+    lateinit var symbolData:Symbol
 
     override val layoutId: Int?
         get() = R.layout.activity_main
@@ -24,5 +25,6 @@ class MainActivity: BaseActivity(), IMainNavigator {
     }
 
     override fun currencyDetailSuccess(data: Symbol) {
+        symbolData = data
     }
 }

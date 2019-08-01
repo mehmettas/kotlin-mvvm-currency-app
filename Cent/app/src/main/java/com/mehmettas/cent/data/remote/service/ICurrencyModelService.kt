@@ -1,5 +1,6 @@
 package com.mehmettas.cent.data.remote.service
 
+import com.mehmettas.cent.data.remote.model.base.BaseResponse
 import com.mehmettas.cent.data.remote.model.symbol.Symbol
 import com.mehmettas.cent.data.remote.model.symbol.SymbolResponse
 import com.mehmettas.cent.utils.AppConstants
@@ -11,5 +12,4 @@ interface ICurrencyModelService {
 
     @GET(AppConstants.API_URL_MODEL)
     fun getCurrenciesWithDetail(): Deferred<Response<SymbolResponse>>
-
 }

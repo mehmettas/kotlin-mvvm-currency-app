@@ -3,11 +3,11 @@ package com.mehmettas.cent.data.remote.model.base
 import com.google.gson.annotations.SerializedName
 import com.mehmettas.cent.data.remote.model.rate.Rates
 
-class BaseResponse(
+open class BaseResponse<out T>(
     @SerializedName("rates")
-    var rates:Rates,
+    val data: T? = null,
     @SerializedName("base")
-    var base:String,
+    var base:String = "",
     @SerializedName("date")
-    var date:String
+    var date:String = ""
 )

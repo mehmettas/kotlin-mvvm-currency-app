@@ -6,7 +6,7 @@ import com.mehmettas.cent.ui.base.BaseActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity: BaseActivity(), IMainNavigator {
-    private val viewModel by viewModel<MainViewModel>()
+    private val viewModel by viewModel<MainViewModel>() // inject the viewModel
 
     override val layoutId: Int?
         get() = R.layout.activity_main

@@ -1,6 +1,5 @@
 package com.mehmettas.cent.ui.main
 
-import com.mehmettas.cent.data.remote.model.symbol.Symbol
 import com.mehmettas.cent.data.remote.model.symbol.SymbolResponse
 import com.mehmettas.cent.data.remote.network.ResultWrapper
 import com.mehmettas.cent.data.repository.DataManager

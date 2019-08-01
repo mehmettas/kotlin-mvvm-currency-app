@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@drawable/bg_item"
+        android:layout_marginBottom="20dp"
+        android:layout_height="77dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ellipseCurrency"
+            android:layout_width="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="15dp"
+            app:srcCompat="@drawable/ellipse_orange"
+            android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textCurrencySymbol"
+            android:layout_width="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/ellipseCurrency"
+            app:layout_constraintBottom_toBottomOf="@id/ellipseCurrency"
+            android:textSize="13sp"
+            android:text="USD"
+            android:textColor="@color/white_text"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/ellipseCurrency"
+            app:layout_constraintEnd_toEndOf="@id/ellipseCurrency"
+            android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textCurrencyName"
+            app:layout_constraintTop_toTopOf="@id/ellipseCurrency"
+            app:layout_constraintBottom_toBottomOf="@id/ellipseCurrency"
+            app:layout_constraintStart_toEndOf="@id/ellipseCurrency"
+            android:layout_marginStart="10dp"
+            android:textSize="13sp"
+            android:text="United States Dolor (USD)"
+            android:textColor="@color/white_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textCurrencyValue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/textCurrencyUpAndDown"
+            android:layout_marginEnd="15dp"
+            android:textColor="@color/white_text"
+            android:textSize="20sp"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:text="7.234"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textCurrencyUpAndDown"
+            android:layout_width="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/textCurrencyValue"
+            android:textSize="13sp"
+            android:text="+ 273%"
+            android:textColor="@color/rising_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textCurrencyValue"
+            android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

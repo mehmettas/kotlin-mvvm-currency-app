@@ -14,5 +14,6 @@ class Currency(
     @SerializedName("position")
     var position:String,
     @SerializedName("last_modified")
-    var lastModified:String
+    var lastModified:String,
+    var rateValue:String?=null // Will be set from the actual api after filtering the rate symbols
 )

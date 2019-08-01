@@ -86,7 +86,4 @@ dependencies {
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.16'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 
-    implementation 'androidx.multidex:multidex:2.0.1'
-
-
 }

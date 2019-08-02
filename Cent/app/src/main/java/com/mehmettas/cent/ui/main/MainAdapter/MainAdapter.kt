@@ -2,6 +2,7 @@ package com.mehmettas.cent.ui.main.MainAdapter
 
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.mehmettas.cent.R
 import com.mehmettas.cent.utils.extensions.inflate
@@ -42,6 +43,14 @@ class MainAdapter(
             listener: MainListListener,
             selectedCurrency: Int
         ) = with(itemView) {
+
+            when(selectedCurrency%4)
+            {
+                0 -> itemView.ellipseCurrency.setImageResource(R.drawable.ellipse_black)
+                1 -> itemView.ellipseCurrency.setImageResource(R.drawable.ellipse_blue)
+                2 -> itemView.ellipseCurrency.setImageResource(R.drawable.ellipse_orange)
+                3 -> itemView.ellipseCurrency.setImageResource(R.drawable.ellipse_purple)
+            }
 
             textCurrencySymbol.text = currency.symbol
             textCurrencyName.text = currency.currencyName

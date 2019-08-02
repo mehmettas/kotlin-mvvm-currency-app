@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mehmettas.cent.R
 import com.mehmettas.cent.utils.extensions.inflate
 import com.mehmettas.cent.data.remote.model.symbol.Currency
+import com.mehmettas.cent.utils.extensions.trimForBothSides
 import kotlinx.android.synthetic.main.layout_item_currency.view.*
 import kotlin.collections.ArrayList
 
@@ -44,7 +45,7 @@ class MainAdapter(
 
             textCurrencySymbol.text = currency.symbol
             textCurrencyName.text = currency.currencyName
-            textCurrencyValue.text = currency.rateValue?.substring(1,currency.rateValue?.length!!.minus(1))
+            textCurrencyValue.text = trimForBothSides(currency.rateValue,1,1) // Kotlin Extension Used (String Extension)
 
             itemView.setOnClickListener {
                 listener.onItemSelectedListener(currency)

@@ -45,7 +45,7 @@ class MainAdapter(
 
             textCurrencySymbol.text = currency.symbol
             textCurrencyName.text = currency.currencyName
-            textCurrencyValue.text = currency.rateValue
+            textCurrencyValue.text = currency.rateValue?.substring(1,currency.rateValue?.length!!.minus(1))
 
             itemView.setOnClickListener {
                 listener.onItemSelectedListener(currency)

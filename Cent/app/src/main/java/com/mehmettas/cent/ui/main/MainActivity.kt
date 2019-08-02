@@ -10,12 +10,16 @@ import com.mehmettas.cent.ui.base.BaseActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.json.JSONObject
 import com.google.gson.JsonParser
+import com.mehmettas.cent.data.remote.model.symbol.Currency
 
 
 class MainActivity: BaseActivity(), IMainNavigator {
     private val viewModel by viewModel<MainViewModel>() // inject the viewModel
+
     lateinit var symbolData:Symbol
     lateinit var latestRates:RatesResponse
+    private var allCurrencies:ArrayList<Currency?> = arrayListOf()
+    private var rateCodes:ArrayList<String> = arrayListOf()
 
     override val layoutId: Int?
         get() = R.layout.activity_main
@@ -37,29 +41,38 @@ class MainActivity: BaseActivity(), IMainNavigator {
     {
         viewModel.latestRates.observe(this, Observer {
             latestRates = it
-            mergeBothApis()
+            formSymbolApi()
         })
     }
 
-    private fun mergeBothApis()
+
+    // Because of the format of json data (has non-key values), I iterated
+    // through string and reform it as JSONObject
+    private fun formSymbolApi()
     {
-        var data = latestRates.data
-
-
         val parser = JsonParser()
-        val obj = parser.parse(Gson().toJson(data)).asJsonObject
+        val ratesObject = parser.parse(Gson().toJson(latestRates.data)).asJsonObject
+        val iterator = ratesObject.keySet().iterator()
 
-        val jsonObject = obj
-
-        val iterator = jsonObject.keySet().iterator()
         while (iterator.hasNext()) {
-            val key = iterator.next() as String
-            println(jsonObject.get(key))
+            rateCodes.add(iterator.next() as String)
         }
+        createAllCurrencies(ratesObject)
+    }
 
-        val jsonObsject = obj as JSONObject
-
-
+    private fun createAllCurrencies(ratesObject: JsonObject)
+    {
+        for(i in 0..rateCodes.size-1)
+        {
+            val currency = symbolData.currencies.find {
+                it.code == rateCodes[i]
+            }
+            if (!currency?.code.isNullOrEmpty())
+            {
+                currency?.rateValue = ratesObject[currency?.code].toString()
+                allCurrencies.add(currency)
+            }
+        }
     }
 
     override fun currencyDetailSuccess(data: Symbol) { // Implement the method which is executed in success case

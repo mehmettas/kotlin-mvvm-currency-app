@@ -72,11 +72,13 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMainList"
             app:layout_constraintTop_toBottomOf="@id/appbar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:paddingTop="10dp"
             tools:listitem="@layout/layout_item_currency"
             android:clipToPadding="false"

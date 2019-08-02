@@ -8,17 +8,22 @@ import com.mehmettas.cent.data.remote.model.rate.RatesResponse
 import com.mehmettas.cent.data.remote.model.symbol.Symbol
 import com.mehmettas.cent.ui.base.BaseActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.json.JSONObject
 import com.google.gson.JsonParser
 import com.mehmettas.cent.data.remote.model.symbol.Currency
+import com.mehmettas.cent.ui.main.MainAdapter.MainAdapter
+import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity: BaseActivity(), IMainNavigator {
+class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener {
     private val viewModel by viewModel<MainViewModel>() // inject the viewModel
+
+    private val currencyAdapter by lazy {
+        MainAdapter(arrayListOf(),this)
+    }
 
     lateinit var symbolData:Symbol
     lateinit var latestRates:RatesResponse
-    private var allCurrencies:ArrayList<Currency?> = arrayListOf()
+    private var allCurrencies:ArrayList<Currency> = arrayListOf()
     private var rateCodes:ArrayList<String> = arrayListOf()
 
     override val layoutId: Int?
@@ -30,6 +35,8 @@ class MainActivity: BaseActivity(), IMainNavigator {
 
     override fun initUI() {
         observeViewModel()
+        rvMainList.setHasFixedSize(true)
+        rvMainList.adapter = currencyAdapter
         viewModel.getCurrencySymbolDetail()
     }
 
@@ -62,7 +69,7 @@ class MainActivity: BaseActivity(), IMainNavigator {
 
     private fun createAllCurrencies(ratesObject: JsonObject)
     {
-        for(i in 0..rateCodes.size-1)
+        for(i in 0 until rateCodes.size-1)
         {
             val currency = symbolData.currencies.find {
                 it.code == rateCodes[i]
@@ -70,13 +77,18 @@ class MainActivity: BaseActivity(), IMainNavigator {
             if (!currency?.code.isNullOrEmpty())
             {
                 currency?.rateValue = ratesObject[currency?.code].toString()
-                allCurrencies.add(currency)
+                allCurrencies.add(currency!!)
             }
         }
+        currencyAdapter.addData(allCurrencies)
     }
 
     override fun currencyDetailSuccess(data: Symbol) { // Implement the method which is executed in success case
         symbolData = data
         viewModel.getLatestRatesAsync()
+    }
+
+    override fun onItemSelectedListener(currency: Currency) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

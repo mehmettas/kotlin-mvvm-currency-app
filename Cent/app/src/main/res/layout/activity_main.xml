@@ -60,9 +60,21 @@
                         android:id="@+id/icBase"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginEnd="24dp"
-                        app:srcCompat="@drawable/ic_base"
+                        app:srcCompat="@drawable/ic_base_ellipse"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/textCurrentBase"
+                        app:layout_constraintTop_toTopOf="@id/icBase"
+                        app:layout_constraintBottom_toBottomOf="@id/icBase"
+                        app:layout_constraintStart_toStartOf="@id/icBase"
+                        app:layout_constraintEnd_toEndOf="@id/icBase"
+                        android:textSize="13sp"
+                        android:textColor="@color/white_text"
+                        android:text="USD"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>

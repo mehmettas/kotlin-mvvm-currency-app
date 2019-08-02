@@ -48,6 +48,7 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener 
     {
         viewModel.latestRates.observe(this, Observer {
             latestRates = it
+            textCurrentBase.text = latestRates.base
             formSymbolApi()
         })
     }

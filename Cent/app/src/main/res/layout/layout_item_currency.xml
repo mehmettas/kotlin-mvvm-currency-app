@@ -3,7 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@drawable/bg_item"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:layout_height="77dp">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -48,7 +48,7 @@
             app:layout_constraintBottom_toTopOf="@id/textCurrencyUpAndDown"
             android:layout_marginEnd="15dp"
             android:textColor="@color/white_text"
-            android:textSize="20sp"
+            android:textSize="17sp"
             app:layout_constraintVertical_chainStyle="packed"
             android:text="7.234"
             android:layout_width="wrap_content"

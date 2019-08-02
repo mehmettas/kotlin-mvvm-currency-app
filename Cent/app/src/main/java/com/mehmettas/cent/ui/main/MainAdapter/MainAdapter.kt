@@ -4,8 +4,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mehmettas.cent.R
-import com.mehmettas.cent.utils.inflate
-import java.util.*
+import com.mehmettas.cent.utils.extensions.inflate
 import com.mehmettas.cent.data.remote.model.symbol.Currency
 import kotlinx.android.synthetic.main.layout_item_currency.view.*
 import kotlin.collections.ArrayList

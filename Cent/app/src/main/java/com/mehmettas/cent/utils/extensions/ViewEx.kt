@@ -1,4 +1,4 @@
-package com.mehmettas.cent.utils
+package com.mehmettas.cent.utils.extensions
 
 import android.view.LayoutInflater
 import android.view.View

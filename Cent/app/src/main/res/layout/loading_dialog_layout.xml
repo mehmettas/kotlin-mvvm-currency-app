@@ -9,6 +9,7 @@
     <pl.droidsonroids.gif.GifImageView
             android:layout_centerInParent="true"
             android:id="@+id/imgLoading"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/ic_loading"/>

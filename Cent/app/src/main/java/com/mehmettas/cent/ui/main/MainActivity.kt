@@ -11,6 +11,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.google.gson.JsonParser
 import com.mehmettas.cent.data.remote.model.symbol.Currency
 import com.mehmettas.cent.ui.main.MainAdapter.MainAdapter
+import com.mehmettas.cent.utils.extensions.getDateOfDaysAgo
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -23,6 +24,7 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener 
 
     lateinit var symbolData:Symbol
     lateinit var latestRates:RatesResponse
+    lateinit var latestRatesWithDate:RatesResponse
     private var allCurrencies:ArrayList<Currency> = arrayListOf()
     private var rateCodes:ArrayList<String> = arrayListOf()
 
@@ -50,9 +52,13 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener 
             latestRates = it
             textCurrentBase.text = latestRates.base
             formSymbolApi()
+            viewModel.getRatesWithDateAsync(getDateOfDaysAgo(1))
+        })
+
+        viewModel.latestRatesWithDate.observe(this, Observer {
+            latestRatesWithDate = it
         })
     }
-
 
     // Because of the format of json data (has non-key values), I iterated
     // through string and reform it as JSONObject

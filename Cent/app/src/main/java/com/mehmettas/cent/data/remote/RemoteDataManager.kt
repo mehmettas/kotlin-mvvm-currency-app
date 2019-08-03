@@ -7,6 +7,7 @@ import com.mehmettas.cent.data.remote.network.RemoteDataException
 import com.mehmettas.cent.data.remote.network.ResultWrapper
 import com.mehmettas.cent.data.remote.service.ICurrencyModelService
 import com.mehmettas.cent.data.remote.service.IRatesService
+import com.mehmettas.cent.utils.extensions.getDateOfDaysAgo
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -25,6 +26,11 @@ class RemoteDataManager(
     override suspend fun getLatestRatesAsync(): ResultWrapper<RatesResponse> =
         withContext(Dispatchers.IO) {
             resultWrapper(ratesService.getLatestRatesAsync())
+        }
+
+    override suspend fun getRatesOfDateAsync(date:String): ResultWrapper<RatesResponse> =
+        withContext(Dispatchers.IO) {
+            resultWrapper(ratesService.getRatesOfDateAsync(date))
         }
 
     private suspend inline fun <reified T : Any> resultWrapper(request: Deferred<Response<T>>): ResultWrapper<T> {

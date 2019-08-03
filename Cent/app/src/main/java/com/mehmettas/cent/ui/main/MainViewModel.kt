@@ -13,6 +13,7 @@ import kotlinx.coroutines.withContext
 
 class MainViewModel(dataManager: DataManager) : BaseViewModel<IMainNavigator>(dataManager){
     val latestRates:MutableLiveData<RatesResponse> = MutableLiveData()
+    val latestRatesWithDate:MutableLiveData<RatesResponse> = MutableLiveData()
 
     fun getCurrencySymbolDetail()
     {
@@ -47,4 +48,22 @@ class MainViewModel(dataManager: DataManager) : BaseViewModel<IMainNavigator>(da
             }
         }
     }
+
+    fun getRatesWithDateAsync(date:String)
+    {
+        getNavigator().showLoading()
+        GlobalScope.launch(Dispatchers.Main) {
+            when(val result: ResultWrapper<RatesResponse> = withContext(Dispatchers.IO){dataManager.getRatesOfDateAsync(date)}){
+                is ResultWrapper.Success -> {
+                    getNavigator().hideLoading()
+                    latestRatesWithDate.value = result.data
+                }
+                is ResultWrapper.Error -> {
+                    getNavigator().hideLoading()
+                    getNavigator().onError(result.exception.message)
+                }
+            }
+        }
+    }
+
 }

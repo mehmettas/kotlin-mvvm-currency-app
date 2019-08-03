@@ -1,10 +1,14 @@
 package com.mehmettas.cent.utils.extensions
 
+import java.text.SimpleDateFormat
 import java.util.*
 
 fun getDateOfDaysAgo(daysAgo:Int): String
 {
     val calendar = Calendar.getInstance()
-    calendar.add(Calendar.DAY_OF_YEAR,-daysAgo)
-    return calendar.time.toString()
+    val format = SimpleDateFormat("yyyy-MM-dd")
+    calendar.time = Date()
+    calendar.add(Calendar.DATE,-daysAgo)
+    val currentDate = format.format((calendar.time))
+    return currentDate
 }

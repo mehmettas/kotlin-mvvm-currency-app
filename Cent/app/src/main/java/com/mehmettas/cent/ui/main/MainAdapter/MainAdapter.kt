@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mehmettas.cent.R
 import com.mehmettas.cent.utils.extensions.inflate
 import com.mehmettas.cent.data.remote.model.symbol.Currency
+import com.mehmettas.cent.utils.AppConstants
 import com.mehmettas.cent.utils.extensions.trimForBothSides
 import kotlinx.android.synthetic.main.layout_item_currency.view.*
 import kotlin.collections.ArrayList
@@ -44,7 +45,7 @@ class MainAdapter(
             selectedCurrency: Int
         ) = with(itemView) {
 
-            when(selectedCurrency%4)
+            when(selectedCurrency%AppConstants.DRAWEBLE_AMOUNT)
             {
                 0 -> itemView.ellipseCurrency.setImageResource(R.drawable.ellipse_black)
                 1 -> itemView.ellipseCurrency.setImageResource(R.drawable.ellipse_blue)

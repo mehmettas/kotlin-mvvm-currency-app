@@ -18,7 +18,7 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener 
     private val viewModel by viewModel<MainViewModel>() // inject the viewModel
 
     private val currencyAdapter by lazy {
-        MainAdapter(arrayListOf(),latestRatesWithDate, this)
+        MainAdapter(arrayListOf(), this)
     }
 
     lateinit var symbolData:Symbol
@@ -52,7 +52,7 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener 
             latestRates = it
             textCurrentBase.text = latestRates.base
             formSymbolApi(latestRates,true)
-            viewModel.getRatesWithDateAsync(getDateOfDaysAgo(1))
+            viewModel.getRatesWithDateAsync(getDateOfDaysAgo(6))
         })
 
         viewModel.latestRatesWithDate.observe(this, Observer {
@@ -73,10 +73,13 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener 
             rateCodes.add(iterator.next() as String)
         }
 
-        if (isMainControl) createAllCurrencies(ratesObject)
+        if (isMainControl)
+            createAllCurrencies(rateCodes,ratesObject)
+        else
+            appendYesterdayValues(rateCodes,ratesObject)
     }
 
-    private fun createAllCurrencies(ratesObject: JsonObject)
+    private fun createAllCurrencies(rateCodes:ArrayList<String>,ratesObject: JsonObject)
     {
         for(i in 0 until rateCodes.size-1)
         {
@@ -87,6 +90,23 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener 
             {
                 currency?.rateValue = ratesObject[currency?.code].toString()
                 allCurrencies.add(currency!!)
+            }
+        }
+    }
+
+    private fun appendYesterdayValues(rateCodes: ArrayList<String>, ratesObject: JsonObject)
+    {
+        for(i in 0 until rateCodes.size-1)
+        {
+            val currency = symbolData.currencies.find {
+                it.code == rateCodes[i]
+            }
+            if (!currency?.code.isNullOrEmpty())
+            {
+                currency?.previousDayValue = ratesObject[currency?.code].toString()
+                allCurrencies.find {
+                    it.code == currency?.code
+                }?.previousDayValue = ratesObject[currency?.code].toString()
             }
         }
         currencyAdapter.addData(allCurrencies)

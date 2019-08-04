@@ -15,7 +15,6 @@ import kotlin.collections.ArrayList
 
 class MainAdapter(
     private var items: ArrayList<Currency> = arrayListOf(),
-    private var itemsRespectToDate:RatesResponse,
     private var listener: MainListListener
 ): RecyclerView.Adapter<MainAdapter.MainViewHolder>()
 {
@@ -58,6 +57,7 @@ class MainAdapter(
             textCurrencySymbol.text = currency.symbol
             textCurrencyName.text = currency.currencyName
             textCurrencyValue.text = trimForBothSides(currency.rateValue,1,1) // Kotlin Extension Used (String Extension)
+            textCurrencyUpAndDown.text = trimForBothSides(currency.previousDayValue,1,1)
 
             itemView.setOnClickListener {
                 listener.onItemSelectedListener(currency)

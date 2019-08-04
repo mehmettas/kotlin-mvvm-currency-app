@@ -12,6 +12,7 @@ import com.mehmettas.cent.utils.AppConstants
 import com.mehmettas.cent.utils.extensions.trimForBothSides
 import kotlinx.android.synthetic.main.layout_item_currency.view.*
 import kotlin.collections.ArrayList
+import kotlin.math.roundToInt
 
 class MainAdapter(
     private var items: ArrayList<Currency> = arrayListOf(),
@@ -57,12 +58,32 @@ class MainAdapter(
             textCurrencySymbol.text = currency.symbol
             textCurrencyName.text = currency.currencyName
             textCurrencyValue.text = trimForBothSides(currency.rateValue,1,1) // Kotlin Extension Used (String Extension)
-            textCurrencyUpAndDown.text = trimForBothSides(currency.previousDayValue,1,1)
+
+            var rateValue:Double = trimForBothSides(currency.rateValue,1,1).toDouble()
+            var previousDayValue:Double = trimForBothSides(currency.previousDayValue,1,1).toDouble()
+            var upAndDownPercent = configureUpDownText(rateValue,previousDayValue)
+            if (upAndDownPercent.toDouble()<0)
+            {
+                textCurrencyUpAndDown.setTextColor(resources.getColor(R.color.decreasing_color))
+                textCurrencyUpAndDown.text = "- ${upAndDownPercent.toDouble()*-1}%"
+            }
+            else
+            {
+                textCurrencyUpAndDown.setTextColor(resources.getColor(R.color.rising_color))
+                textCurrencyUpAndDown.text = "+ ${upAndDownPercent.toDouble()}%"
+            }
+
 
             itemView.setOnClickListener {
                 listener.onItemSelectedListener(currency)
             }
         }
+    }
+
+    private fun configureUpDownText(rateValue:Double,previousDayValue:Double): String
+    {
+        var percentDifference = ((rateValue - previousDayValue)/rateValue)*100
+        return "%.3f".format(percentDifference)
     }
 
     interface MainListListener{

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.mehmettas.cent.R
+import com.mehmettas.cent.data.remote.model.rate.RatesResponse
 import com.mehmettas.cent.utils.extensions.inflate
 import com.mehmettas.cent.data.remote.model.symbol.Currency
 import com.mehmettas.cent.utils.AppConstants
@@ -14,6 +15,7 @@ import kotlin.collections.ArrayList
 
 class MainAdapter(
     private var items: ArrayList<Currency> = arrayListOf(),
+    private var itemsRespectToDate:RatesResponse,
     private var listener: MainListListener
 ): RecyclerView.Adapter<MainAdapter.MainViewHolder>()
 {

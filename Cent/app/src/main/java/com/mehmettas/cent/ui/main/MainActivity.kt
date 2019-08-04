@@ -14,17 +14,17 @@ import com.mehmettas.cent.ui.main.MainAdapter.MainAdapter
 import com.mehmettas.cent.utils.extensions.getDateOfDaysAgo
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener {
     private val viewModel by viewModel<MainViewModel>() // inject the viewModel
 
     private val currencyAdapter by lazy {
-        MainAdapter(arrayListOf(),this)
+        MainAdapter(arrayListOf(),latestRatesWithDate, this)
     }
 
     lateinit var symbolData:Symbol
     lateinit var latestRates:RatesResponse
     lateinit var latestRatesWithDate:RatesResponse
+
     private var allCurrencies:ArrayList<Currency> = arrayListOf()
     private var rateCodes:ArrayList<String> = arrayListOf()
 
@@ -51,18 +51,19 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener 
         viewModel.latestRates.observe(this, Observer {
             latestRates = it
             textCurrentBase.text = latestRates.base
-            formSymbolApi()
+            formSymbolApi(latestRates,true)
             viewModel.getRatesWithDateAsync(getDateOfDaysAgo(1))
         })
 
         viewModel.latestRatesWithDate.observe(this, Observer {
             latestRatesWithDate = it
+            formSymbolApi(latestRatesWithDate,false)
         })
     }
 
     // Because of the format of json data (has non-key values), I iterated
     // through string and reform it as JSONObject
-    private fun formSymbolApi()
+    private fun formSymbolApi(latestRates:RatesResponse,isMainControl:Boolean)
     {
         val parser = JsonParser()
         val ratesObject = parser.parse(Gson().toJson(latestRates.data)).asJsonObject
@@ -71,7 +72,8 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener 
         while (iterator.hasNext()) {
             rateCodes.add(iterator.next() as String)
         }
-        createAllCurrencies(ratesObject)
+
+        if (isMainControl) createAllCurrencies(ratesObject)
     }
 
     private fun createAllCurrencies(ratesObject: JsonObject)
@@ -96,6 +98,5 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener 
     }
 
     override fun onItemSelectedListener(currency: Currency) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

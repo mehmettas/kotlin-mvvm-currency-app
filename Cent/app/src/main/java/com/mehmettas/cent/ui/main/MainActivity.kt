@@ -10,6 +10,7 @@ import com.mehmettas.cent.ui.base.BaseActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.google.gson.JsonParser
 import com.mehmettas.cent.data.remote.model.symbol.Currency
+import com.mehmettas.cent.ui.currencybase.CurrencyBaseDialog
 import com.mehmettas.cent.ui.main.MainAdapter.MainAdapter
 import com.mehmettas.cent.utils.extensions.getDateOfDaysAgo
 import kotlinx.android.synthetic.main.activity_main.*
@@ -43,7 +44,10 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener 
     }
 
     override fun initListener() {
-
+        icBase.setOnClickListener {
+            CurrencyBaseDialog.newInstance()
+                .show(supportFragmentManager.beginTransaction(),"")
+        }
     }
 
     private fun observeViewModel() // Observe the data that we requested
@@ -52,7 +56,7 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener 
             latestRates = it
             textCurrentBase.text = latestRates.base
             formSymbolApi(latestRates,true)
-            viewModel.getRatesWithDateAsync(getDateOfDaysAgo(6))
+            viewModel.getRatesWithDateAsync(getDateOfDaysAgo(1))
         })
 
         viewModel.latestRatesWithDate.observe(this, Observer {

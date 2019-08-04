@@ -2,17 +2,14 @@ package com.mehmettas.cent.ui.main.MainAdapter
 
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.mehmettas.cent.R
-import com.mehmettas.cent.data.remote.model.rate.RatesResponse
 import com.mehmettas.cent.utils.extensions.inflate
 import com.mehmettas.cent.data.remote.model.symbol.Currency
 import com.mehmettas.cent.utils.AppConstants
 import com.mehmettas.cent.utils.extensions.trimForBothSides
 import kotlinx.android.synthetic.main.layout_item_currency.view.*
 import kotlin.collections.ArrayList
-import kotlin.math.roundToInt
 
 class MainAdapter(
     private var items: ArrayList<Currency> = arrayListOf(),
@@ -72,7 +69,6 @@ class MainAdapter(
                 textCurrencyUpAndDown.setTextColor(resources.getColor(R.color.rising_color))
                 textCurrencyUpAndDown.text = "+ ${upAndDownPercent.toDouble()}%"
             }
-
 
             itemView.setOnClickListener {
                 listener.onItemSelectedListener(currency)

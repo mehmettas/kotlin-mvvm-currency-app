@@ -14,6 +14,19 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
+    <style name="DialogFragmentTheme" parent="AppTheme">
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:layout_width">400dp</item>
+        <item name="android:layout_height">400dp</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowAnimationStyle">@style/DialogFragmentAnimation</item>
+    </style>
 
+    <style name="DialogFragmentAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:windowEnterAnimation">@anim/slide_fragment_right</item>
+        <item name="android:windowExitAnimation">@anim/slide_fragment_left</item>
+    </style>
 
 </resources>

@@ -24,6 +24,23 @@
         <item name="android:windowAnimationStyle">@style/DialogFragmentAnimation</item>
     </style>
 
+
+    <style name="FullScreenDialogStyle" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+
+        <!-- Set this to true if you want Full Screen without status bar -->
+        <item name="android:windowFullscreen">false</item>
+
+        <item name="android:layout_width">400dp</item>
+        <item name="android:layout_height">400dp</item>
+        <item name="android:windowIsFloating">false</item>
+        <!-- Additionally if you want animations when dialog opening -->
+        <item name="android:windowAnimationStyle">@style/DialogFragmentAnimation</item>
+
+    </style>
+
     <style name="DialogFragmentAnimation" parent="@android:style/Animation.Activity">
         <item name="android:windowEnterAnimation">@anim/slide_fragment_right</item>
         <item name="android:windowExitAnimation">@anim/slide_fragment_left</item>

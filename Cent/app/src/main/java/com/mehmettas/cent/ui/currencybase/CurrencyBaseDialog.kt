@@ -3,6 +3,7 @@ package com.mehmettas.cent.ui.currencybase
 import com.mehmettas.cent.R
 import com.mehmettas.cent.ui.base.BaseDialogFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import android.view.ViewGroup
 
 class CurrencyBaseDialog: BaseDialogFragment(), ICurrencyBaseNavigator {
     private val viewModel by viewModel<CurrencyBaseViewModel>()
@@ -10,7 +11,8 @@ class CurrencyBaseDialog: BaseDialogFragment(), ICurrencyBaseNavigator {
     companion object {
         fun newInstance(): CurrencyBaseDialog {
             return CurrencyBaseDialog().apply {
-                setStyle(STYLE_NORMAL, R.style.DialogFragmentTheme)
+                setStyle(STYLE_NORMAL
+                    , R.style.FullScreenDialogStyle)
             }
         }
     }
@@ -32,6 +34,13 @@ class CurrencyBaseDialog: BaseDialogFragment(), ICurrencyBaseNavigator {
 
     override fun onStart() {
         super.onStart()
+        var dialog = dialog
+        if (dialog!=null)
+        {
+            val width = ViewGroup.LayoutParams.WRAP_CONTENT
+            val height = ViewGroup.LayoutParams.WRAP_CONTENT
+            dialog.window.setLayout(width, height)
+        }
 
     }
 

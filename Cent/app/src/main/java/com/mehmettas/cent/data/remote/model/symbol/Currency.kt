@@ -1,6 +1,7 @@
 package com.mehmettas.cent.data.remote.model.symbol
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 class Currency(
     @SerializedName("code")
@@ -17,4 +18,4 @@ class Currency(
     var lastModified:String,
     var rateValue:String?=null, // Will be set from the actual api after filtering the rate symbols
     var previousDayValue:String?=null
-)
+): Serializable

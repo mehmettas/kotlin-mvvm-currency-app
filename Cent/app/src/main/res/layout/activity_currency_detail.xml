@@ -86,6 +86,107 @@
             app:layout_constraintTop_toBottomOf="@id/textRisingDecreasing"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_height="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clWeek"
+                android:layout_width="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/img_menu_selected"
+                android:layout_height="24dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textWeek"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:padding="3dp"
+                    android:textSize="11sp"
+                    android:text="Week"
+                    android:textColor="@color/white_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clMonth"
+                android:layout_width="48dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toTopOf="@id/clWeek"
+                app:layout_constraintBottom_toBottomOf="@id/clWeek"
+                app:layout_constraintStart_toEndOf="@id/clWeek"
+                android:background="@drawable/img_menu_selected"
+                android:layout_height="24dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textMonth"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:padding="3dp"
+                    android:textSize="11sp"
+                    android:text="Month"
+                    android:textColor="@color/white_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clYear"
+                android:layout_width="48dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toTopOf="@id/clMonth"
+                app:layout_constraintBottom_toBottomOf="@id/clMonth"
+                app:layout_constraintStart_toEndOf="@id/clMonth"
+                android:background="@drawable/img_menu_selected"
+                android:layout_height="24dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textYear"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:padding="3dp"
+                    android:textSize="11sp"
+                    android:text="Year"
+                    android:textColor="@color/white_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clFiveYear"
+                android:layout_width="48dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toTopOf="@id/clYear"
+                app:layout_constraintBottom_toBottomOf="@id/clYear"
+                app:layout_constraintStart_toEndOf="@id/clYear"
+                android:background="@drawable/img_menu_selected"
+                android:layout_height="24dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textFiveYear"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:padding="3dp"
+                    android:textSize="11sp"
+                    android:text="5 Year"
+                    android:textColor="@color/white_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

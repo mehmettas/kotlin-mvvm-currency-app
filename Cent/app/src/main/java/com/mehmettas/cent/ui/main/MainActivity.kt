@@ -125,6 +125,5 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener,
     }
 
     override fun whenDialogComplete(selectedBase: String) {
-        val a = 0
     }
 }

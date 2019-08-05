@@ -8,4 +8,5 @@ interface IRemoteDataManager {
     suspend fun getCurrenciesWithDetail() : ResultWrapper<SymbolResponse>
     suspend fun getLatestRatesAsync(): ResultWrapper<RatesResponse>
     suspend fun getRatesOfDateAsync(date:String): ResultWrapper<RatesResponse>
+    suspend fun getLatestWithBaseAsync(baseCode:String): ResultWrapper<RatesResponse>
 }

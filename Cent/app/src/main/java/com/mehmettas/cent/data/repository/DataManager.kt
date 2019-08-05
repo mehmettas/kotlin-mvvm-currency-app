@@ -18,5 +18,8 @@ class DataManager(
 
     override suspend fun getRatesOfDateAsync(date: String): ResultWrapper<RatesResponse> =
         remoteDataManager.getRatesOfDateAsync(date)
+
+    override suspend fun getLatestWithBaseAsync(baseCode: String): ResultWrapper<RatesResponse> =
+        remoteDataManager.getLatestWithBaseAsync(baseCode)
 }
 

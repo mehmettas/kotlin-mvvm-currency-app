@@ -76,6 +76,7 @@ class CurrencyBaseDialog: BaseDialogFragment(), ICurrencyBaseNavigator, Currency
 
     override fun onItemSelected(currency: Currency) {
         listener.whenDialogComplete(currency.code)
+        dialog.dismiss()
     }
 
     interface DialogReturnedBackListener{

@@ -33,6 +33,11 @@ class RemoteDataManager(
             resultWrapper(ratesService.getRatesOfDateAsync(date))
         }
 
+    override suspend fun getLatestWithBaseAsync(baseCode: String): ResultWrapper<RatesResponse> =
+        withContext(Dispatchers.IO) {
+            resultWrapper(ratesService.getLatestWithBaseAsync(baseCode))
+        }
+
     private suspend inline fun <reified T : Any> resultWrapper(request: Deferred<Response<T>>): ResultWrapper<T> {
         return try {
             val response = request.await()

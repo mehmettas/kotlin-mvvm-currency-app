@@ -38,15 +38,9 @@ class CurrencyBaseDialog: BaseDialogFragment(), ICurrencyBaseNavigator, Currency
     }
 
     override fun initUI() {
-        observeViewModel()
-
         rvBaseSelection.setHasFixedSize(true)
         rvBaseSelection.adapter = currenciesAdapter
-        arguments?.let {
-            currencies = it.getSerializable(AppConstants.ALL_CURRENCIES) as ArrayList<Currency> // get arguments here.
-            currenciesAdapter.addData(currencies)
-
-        }
+        observeViewModel()
     }
 
     private fun observeViewModel() {
@@ -59,6 +53,12 @@ class CurrencyBaseDialog: BaseDialogFragment(), ICurrencyBaseNavigator, Currency
         {
             dialog.window.setLayout(750, 1000)
             dialog.window.setBackgroundDrawable(resources.getDrawable(R.drawable.bg_dialog))
+        }
+
+        arguments?.let {
+            currencies = it.getSerializable(AppConstants.ALL_CURRENCIES) as ArrayList<Currency> // get arguments here.
+            currenciesAdapter.addData(currencies)
+
         }
     }
 

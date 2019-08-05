@@ -30,13 +30,16 @@
                 app:layout_constraintTop_toBottomOf="@id/imgClose"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginStart="20dp"
+                android:clipToPadding="false"
+                android:paddingTop="5dp"
                 tools:listitem="@layout/layout_base_item"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_marginEnd="20dp"
                 android:layout_marginTop="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_width="0dp"
-                android:layout_height="380dp">
+                android:layout_height="0dp">
         </androidx.recyclerview.widget.RecyclerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

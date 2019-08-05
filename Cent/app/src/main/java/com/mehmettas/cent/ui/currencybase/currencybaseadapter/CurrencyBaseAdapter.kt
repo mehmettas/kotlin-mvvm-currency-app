@@ -5,13 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mehmettas.cent.R
 import com.mehmettas.cent.data.remote.model.symbol.Currency
-import com.mehmettas.cent.ui.main.MainAdapter.MainAdapter
 import com.mehmettas.cent.utils.extensions.inflate
 import kotlinx.android.synthetic.main.layout_base_item.view.*
 
 class CurrencyBaseAdapter (
     private var items:ArrayList<Currency> = arrayListOf(),
-    private var listener: CurrencyBaseAdapter.BaseAdapterListener
+    private var listener: BaseAdapterListener
 ): RecyclerView.Adapter<CurrencyBaseAdapter.CurrencyBaseViewHolder>()
 {
 

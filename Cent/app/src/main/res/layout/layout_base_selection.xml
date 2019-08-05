@@ -1,46 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <androidx.constraintlayout.widget.Guideline
-            android:orientation="vertical"
-            android:id="@+id/start"
-            app:layout_constraintGuide_percent=".15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    <androidx.constraintlayout.widget.Guideline
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent=".85"
-            android:id="@+id/end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    <androidx.constraintlayout.widget.Guideline
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".2"
-            android:id="@+id/top"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    <androidx.constraintlayout.widget.Guideline
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".8"
-            android:id="@+id/bottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            app:layout_constraintTop_toTopOf="@id/top"
-            app:layout_constraintBottom_toBottomOf="@id/bottom"
-            android:background="@drawable/bg_dialog"
-            app:layout_constraintEnd_toEndOf="@id/end"
-            app:layout_constraintStart_toStartOf="@id/start"
-            android:layout_height="0dp">
-
+        android:layout_width="280dp" xmlns:tools="http://schemas.android.com/tools"
+        android:background="@drawable/bg_dialog"
+        android:layout_height="440dp" xmlns:app="http://schemas.android.com/apk/res-auto">
         <TextView
                 android:layout_width="wrap_content"
                 android:text="@string/select_base"
@@ -63,18 +26,17 @@
                 android:layout_height="wrap_content"/>
 
         <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBaseSelection"
                 app:layout_constraintTop_toBottomOf="@id/imgClose"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginStart="20dp"
+                tools:listitem="@layout/layout_base_item"
                 android:layout_marginEnd="20dp"
                 android:layout_marginTop="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_width="0dp"
-                android:layout_height="0dp">
+                android:layout_height="380dp">
         </androidx.recyclerview.widget.RecyclerView>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,6 +44,7 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener 
     }
 
     override fun initListener() {
+        // pass all currencies to fragment
         icBase.setOnClickListener {
             CurrencyBaseDialog.newInstance()
                 .show(supportFragmentManager.beginTransaction(),"")

@@ -9,4 +9,5 @@ interface IRemoteDataManager {
     suspend fun getLatestRatesAsync(): ResultWrapper<RatesResponse>
     suspend fun getRatesOfDateAsync(date:String): ResultWrapper<RatesResponse>
     suspend fun getLatestWithBaseAsync(baseCode:String): ResultWrapper<RatesResponse>
+    suspend fun getRatesOfDateWithBaseAsync(date: String,baseCode: String): ResultWrapper<RatesResponse>
 }

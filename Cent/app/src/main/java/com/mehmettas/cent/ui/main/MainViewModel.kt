@@ -66,4 +66,39 @@ class MainViewModel(dataManager: DataManager) : BaseViewModel<IMainNavigator>(da
         }
     }
 
+    fun getLatestRatesWithBaseAsync(baseCurrencyCode:String)
+    {
+        getNavigator().showLoading()
+        GlobalScope.launch(Dispatchers.Main) {
+            when(val result: ResultWrapper<RatesResponse> = withContext(Dispatchers.IO){dataManager.getLatestWithBaseAsync(baseCurrencyCode)}){
+                is ResultWrapper.Success -> {
+                    getNavigator().hideLoading()
+                    getNavigator().latestWithBaseSuccess(result.data)
+                }
+                is ResultWrapper.Error -> {
+                    getNavigator().hideLoading()
+                    getNavigator().onError(result.exception.message)
+                }
+            }
+        }
+    }
+
+    fun getRatesWithBaseAndDateAsync(date:String,base:String)
+    {
+        getNavigator().showLoading()
+        GlobalScope.launch(Dispatchers.Main) {
+            when(val result: ResultWrapper<RatesResponse> = withContext(Dispatchers.IO){dataManager.getRatesOfDateWithBaseAsync(date,base)}){
+                is ResultWrapper.Success -> {
+                    getNavigator().hideLoading()
+                    latestRatesWithDate.value = result.data
+                }
+                is ResultWrapper.Error -> {
+                    getNavigator().hideLoading()
+                    getNavigator().onError(result.exception.message)
+                }
+            }
+        }
+    }
+
+
 }

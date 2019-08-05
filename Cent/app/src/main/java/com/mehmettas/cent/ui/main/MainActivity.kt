@@ -125,5 +125,14 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener,
     }
 
     override fun whenDialogComplete(selectedBase: String) {
+        textCurrentBase.text = selectedBase
+        viewModel.getLatestRatesWithBaseAsync(selectedBase)
+    }
+
+    override fun latestWithBaseSuccess(data: RatesResponse) {
+        allCurrencies = arrayListOf()
+        rateCodes = arrayListOf()
+        formSymbolApi(data,true)
+        viewModel.getRatesWithBaseAndDateAsync(getDateOfDaysAgo(1),data.base)
     }
 }

@@ -18,4 +18,10 @@ interface IRatesService {
     @GET("latest")
     fun getLatestWithBaseAsync(@Query("base") baseCurrency:String): Deferred<Response<RatesResponse>>
 
+    @GET("{date}")
+    fun getRatesOfDateWithBaseAsync(
+        @Path("date")date:String,
+        @Query("base")baseCurrency: String
+    ): Deferred<Response<RatesResponse>>
+
 }

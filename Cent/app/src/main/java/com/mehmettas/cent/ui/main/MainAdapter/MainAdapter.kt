@@ -54,9 +54,9 @@ class MainAdapter(
 
             textCurrencySymbol.text = currency.symbol
             textCurrencyName.text = currency.currencyName
-            textCurrencyValue.text = trimForBothSides(currency.rateValue,1,1) // Kotlin Extension Used (String Extension)
+            textCurrencyValue.text = "%.3f".format(trimForBothSides(currency.rateValue,1,1).toDouble())  // Kotlin Extension Used (String Extension)
 
-            var rateValue:Double = trimForBothSides(currency.rateValue,1,1).toDouble()
+            var rateValue:Double =  trimForBothSides(currency.rateValue,1,1).toDouble()
             var previousDayValue:Double = trimForBothSides(currency.previousDayValue,1,1).toDouble()
             var upAndDownPercent = configureUpDownText(rateValue,previousDayValue)
             if (upAndDownPercent.toDouble()<0)

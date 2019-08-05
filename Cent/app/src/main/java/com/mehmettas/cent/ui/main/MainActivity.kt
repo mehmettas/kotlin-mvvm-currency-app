@@ -15,7 +15,7 @@ import com.mehmettas.cent.ui.main.MainAdapter.MainAdapter
 import com.mehmettas.cent.utils.extensions.getDateOfDaysAgo
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener {
+class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener, CurrencyBaseDialog.DialogReturnedBackListener {
     private val viewModel by viewModel<MainViewModel>() // inject the viewModel
 
     private val currencyAdapter by lazy {
@@ -122,5 +122,9 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener 
     }
 
     override fun onItemSelectedListener(currency: Currency) {
+    }
+
+    override fun whenDialogComplete(selectedBase: String) {
+        val a = 0
     }
 }

@@ -1,5 +1,6 @@
 package com.mehmettas.cent.ui.currencybase
 
+import android.content.Context
 import android.os.Bundle
 import com.mehmettas.cent.R
 import com.mehmettas.cent.data.remote.model.symbol.Currency
@@ -15,6 +16,7 @@ import kotlin.collections.ArrayList
 class CurrencyBaseDialog: BaseDialogFragment(), ICurrencyBaseNavigator, CurrencyBaseAdapter.BaseAdapterListener {
     private val viewModel by viewModel<CurrencyBaseViewModel>()
     lateinit var currencies:ArrayList<Currency>
+    lateinit var listener:DialogReturnedBackListener
 
     private val currenciesAdapter by lazy {
         CurrencyBaseAdapter(arrayListOf(), this)
@@ -58,7 +60,6 @@ class CurrencyBaseDialog: BaseDialogFragment(), ICurrencyBaseNavigator, Currency
         arguments?.let {
             currencies = it.getSerializable(AppConstants.ALL_CURRENCIES) as ArrayList<Currency> // get arguments here.
             currenciesAdapter.addData(currencies)
-
         }
     }
 
@@ -68,6 +69,16 @@ class CurrencyBaseDialog: BaseDialogFragment(), ICurrencyBaseNavigator, Currency
         }
     }
 
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        listener = context as DialogReturnedBackListener
+    }
+
     override fun onItemSelected(currency: Currency) {
+        listener.whenDialogComplete(currency.code)
+    }
+
+    interface DialogReturnedBackListener{
+        fun whenDialogComplete(selectedBase:String)
     }
 }

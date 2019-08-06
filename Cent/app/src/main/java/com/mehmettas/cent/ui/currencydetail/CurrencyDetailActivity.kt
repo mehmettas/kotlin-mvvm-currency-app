@@ -239,22 +239,17 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
         dataChart.xAxis.isGranularityEnabled = true
         dataChart.xAxis.granularity = 1.0F
         dataChart.description.isEnabled = false
-
         dataChart.axisLeft.isEnabled = false
         dataChart.axisRight.axisLineWidth = 0F
         dataChart.axisRight.axisLineColor = Color.WHITE
         dataChart.axisRight.setDrawAxisLine(false)
-
-
+        dataChart.axisRight.textColor = Color.WHITE
         dataChart.axisRight.setDrawGridLines(false)
         dataChart.axisLeft.setDrawGridLines(false)
         dataChart.xAxis.setDrawGridLines(false)
-
         dataChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
         dataChart.xAxis.axisLineColor = Color.WHITE
-
         dataChart.xAxis.isEnabled = false
-
         dataChart.data = lineData
 
     }

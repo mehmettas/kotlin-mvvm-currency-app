@@ -1,13 +1,12 @@
 package com.mehmettas.cent.data.remote
 
-import com.mehmettas.cent.data.remote.model.rate.Rates
 import com.mehmettas.cent.data.remote.model.rate.RatesResponse
 import com.mehmettas.cent.data.remote.model.symbol.SymbolResponse
 import com.mehmettas.cent.data.remote.network.RemoteDataException
 import com.mehmettas.cent.data.remote.network.ResultWrapper
 import com.mehmettas.cent.data.remote.service.ICurrencyModelService
+import com.mehmettas.cent.data.remote.service.ICurrencyTimePeriodService
 import com.mehmettas.cent.data.remote.service.IRatesService
-import com.mehmettas.cent.utils.extensions.getDateOfDaysAgo
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -15,7 +14,8 @@ import retrofit2.Response
 
 class RemoteDataManager(
     private val modelService:ICurrencyModelService,
-    private val ratesService:IRatesService
+    private val ratesService:IRatesService,
+    private val timePeriodSerive:ICurrencyTimePeriodService
     ): IRemoteDataManager {
 
     override suspend fun getCurrenciesWithDetail(): ResultWrapper<SymbolResponse> =

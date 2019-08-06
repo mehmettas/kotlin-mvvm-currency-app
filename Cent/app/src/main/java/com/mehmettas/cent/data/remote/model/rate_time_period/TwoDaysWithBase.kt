@@ -8,5 +8,7 @@ class TwoDaysWithBase(
     @SerializedName("end_at")
     var endAt:String,
     @SerializedName("base")
-    var base:String
+    var base:String,
+    @SerializedName("rates")
+    var rates:String
 )

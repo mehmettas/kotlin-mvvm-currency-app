@@ -6,5 +6,5 @@ import org.koin.dsl.module.module
 
 val managerModule = module {
     single { DataManager(get()) }
-    single { RemoteDataManager(get(),get()) }
+    single { RemoteDataManager(get(),get(),get()) }
 }

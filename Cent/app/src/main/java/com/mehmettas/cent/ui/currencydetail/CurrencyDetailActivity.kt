@@ -38,11 +38,6 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
 
     override fun initUI() {
         currency = intent.getSerializableExtra(AppConstants.CURRENCY_INTENT) as Currency
-
-        anim.interpolator = LinearInterpolator()
-        anim.repeatCount = Animation.INFINITE
-        anim.duration = 700
-
         initData()
     }
 
@@ -159,21 +154,24 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
     }
 
     override fun twoTimePeriodSuccess(data: TwoDaysWithBase?) {
-        val x = 0
-
-        val getrow = data?.rates
-        val t = getrow as LinkedTreeMap<*, *>
-        val objectMap = Gson().toJsonTree(t).getAsJsonObject()
-
-        val iterator = objectMap.keySet().iterator()
+        // Because of the reason that we have complex api with non-key values and dynamic
+        // data sets, here I converted LinkedTreeMap into Json object and get all the key values
+        // that I need to get
 
         val days:ArrayList<String> = arrayListOf()
+        val values:ArrayList<String> = arrayListOf()
+        val treeMap =  data?.rates as LinkedTreeMap<*, *>
+        val objectMap = Gson().toJsonTree(treeMap).getAsJsonObject()
+        val iterator = objectMap.keySet().iterator()
+
         while (iterator.hasNext()) {
             days.add(iterator.next() as String)
         }
 
-        val name = t["name"].toString()
-
+        for(x in 0 until days.size)
+        {
+            values.add( treeMap[days[x]].toString().replace("${currency.code}=","").replace("{","").replace("}",""))
+        }
 
     }
 }

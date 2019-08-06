@@ -124,7 +124,7 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener,
     }
 
     override fun onItemSelectedListener(currency: Currency) {
-        launchActivity<CurrencyDetailActivity> {  }
+        launchActivity<CurrencyDetailActivity> {  }  // Use Intent extension to easily use intents .
     }
 
     override fun whenDialogComplete(selectedBase: String) {

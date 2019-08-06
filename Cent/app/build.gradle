@@ -85,5 +85,6 @@ dependencies {
     // 3rd Party
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.16'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
+    implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
 
 }

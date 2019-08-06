@@ -1,5 +1,7 @@
 package com.mehmettas.cent.ui.currencydetail
 
+import android.view.animation.RotateAnimation
+import com.bumptech.glide.load.resource.bitmap.Rotate
 import com.mehmettas.cent.R
 import com.mehmettas.cent.data.remote.model.symbol.Currency
 import com.mehmettas.cent.ui.base.BaseActivity
@@ -8,10 +10,13 @@ import com.mehmettas.cent.utils.extensions.trimForBothSides
 import kotlinx.android.synthetic.main.activity_currency_detail.*
 import kotlinx.android.synthetic.main.activity_currency_detail.textCurrencyValue
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import android.view.animation.Animation
+import android.view.animation.LinearInterpolator
 
 class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
     private val viewModel by viewModel<CurrencyDetailViewModel>()
     lateinit var currency:Currency
+    val anim = RotateAnimation(0f, 350f, 15f, 15f)
 
     override val layoutId: Int?
         get() = R.layout.activity_currency_detail
@@ -22,6 +27,11 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
 
     override fun initUI() {
         currency = intent.getSerializableExtra(AppConstants.CURRENCY_INTENT) as Currency
+
+        anim.interpolator = LinearInterpolator()
+        anim.repeatCount = Animation.INFINITE
+        anim.duration = 700
+
         initData()
     }
 
@@ -44,7 +54,8 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
     override fun initListener() {
 
         clWeek.setOnClickListener {
-           initMenuItemBackground(AppConstants.WEEK)
+            initMenuItemBackground(AppConstants.WEEK)
+            createXaxisData(AppConstants.WEEK)
         }
 
         clMonth.setOnClickListener {
@@ -94,6 +105,11 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
                 clWeek.setBackgroundResource(0)
             }
         }
+    }
+
+    private fun createXaxisData(type:String)
+    {
+
     }
 
     private fun configureUpAndDown(upAndDownPercent:String?)

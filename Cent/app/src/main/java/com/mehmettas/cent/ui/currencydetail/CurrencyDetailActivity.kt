@@ -1,21 +1,24 @@
 package com.mehmettas.cent.ui.currencydetail
 
+import com.mehmettas.cent.R
 import com.mehmettas.cent.ui.base.BaseActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CurrencyDetailActivity: BaseActivity, ICurrencyDetailNavigator {
+class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
+    private val viewModel by viewModel<CurrencyDetailViewModel>()
 
     override val layoutId: Int?
-        get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
+        get() = R.layout.activity_currency_detail
 
     override fun initNavigator() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+       viewModel.setNavigator(this)
     }
 
     override fun initUI() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun initListener() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 }

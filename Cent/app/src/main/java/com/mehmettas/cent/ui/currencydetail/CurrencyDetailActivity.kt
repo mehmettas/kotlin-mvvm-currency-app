@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_currency_detail.textCurrencyValue
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
+import com.mehmettas.cent.utils.extensions.getCurrentDate
 import com.mehmettas.cent.utils.extensions.getDateOfDaysAgo
 import com.mehmettas.cent.utils.extensions.getDaysOftheWeek
 
@@ -57,7 +58,8 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
 
         clWeek.setOnClickListener {
             initMenuItemBackground(AppConstants.WEEK)
-            createXaxisData(AppConstants.WEEK)
+            createXAxisData(AppConstants.WEEK)
+            createYAxisData(AppConstants.WEEK)
         }
 
         clMonth.setOnClickListener {
@@ -123,12 +125,13 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
 
     private fun createYAxisData(type:String)
     {
+        var firstDate  = ""
+        var currentDate = getCurrentDate()
         when(type)
         {
             AppConstants.WEEK -> {
-                getDateOfDaysAgo(7)
+                firstDate = getDateOfDaysAgo(7)
             }
-
         }
     }
 

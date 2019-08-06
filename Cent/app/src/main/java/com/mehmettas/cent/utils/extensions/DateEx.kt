@@ -11,6 +11,14 @@ fun getDateOfDaysAgo(daysAgo:Int): String
     val format = SimpleDateFormat("yyyy-MM-dd")
     calendar.time = Date()
     calendar.add(Calendar.DATE,-daysAgo)
+    val daysAfter = format.format((calendar.time))
+    return daysAfter
+}
+
+fun getCurrentDate(): String
+{
+    val calendar = Calendar.getInstance()
+    val format = SimpleDateFormat("yyyy-MM-dd")
     val currentDate = format.format((calendar.time))
     return currentDate
 }

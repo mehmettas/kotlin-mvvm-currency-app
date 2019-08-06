@@ -10,5 +10,5 @@ class TwoDaysWithBase(
     @SerializedName("base")
     var base:String,
     @SerializedName("rates")
-    var rates:String
+    var rates:Any
 )

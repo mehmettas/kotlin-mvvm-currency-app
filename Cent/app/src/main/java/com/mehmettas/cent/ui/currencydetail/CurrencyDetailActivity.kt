@@ -12,6 +12,8 @@ import kotlinx.android.synthetic.main.activity_currency_detail.textCurrencyValue
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
+import com.mehmettas.cent.utils.extensions.getDateOfDaysAgo
+import com.mehmettas.cent.utils.extensions.getDaysOftheWeek
 
 class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
     private val viewModel by viewModel<CurrencyDetailViewModel>()
@@ -107,9 +109,27 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
         }
     }
 
-    private fun createXaxisData(type:String)
+    private fun createXAxisData(type:String): ArrayList<String>
     {
+        var xAxisData = arrayListOf<String>()
+        when(type)
+        {
+            AppConstants.WEEK -> {
+                xAxisData = getDaysOftheWeek()
+            }
+        }
+        return xAxisData
+    }
 
+    private fun createYAxisData(type:String)
+    {
+        when(type)
+        {
+            AppConstants.WEEK -> {
+                getDateOfDaysAgo(7)
+            }
+
+        }
     }
 
     private fun configureUpAndDown(upAndDownPercent:String?)

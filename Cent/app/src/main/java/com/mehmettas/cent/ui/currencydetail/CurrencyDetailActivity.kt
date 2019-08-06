@@ -67,14 +67,20 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
 
         clMonth.setOnClickListener {
             initMenuItemBackground(AppConstants.MONTH)
+            createXAxisData(AppConstants.MONTH)
+            createYAxisData(AppConstants.MONTH)
         }
 
         clYear.setOnClickListener {
             initMenuItemBackground(AppConstants.YEAR)
+            createXAxisData(AppConstants.YEAR)
+            createYAxisData(AppConstants.YEAR)
         }
 
         clFiveYear.setOnClickListener {
             initMenuItemBackground(AppConstants.FIVE_YEAR)
+            createXAxisData(AppConstants.FIVE_YEAR)
+            createYAxisData(AppConstants.FIVE_YEAR)
         }
 
         imgBack.setOnClickListener {
@@ -135,6 +141,15 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
             AppConstants.WEEK -> {
                 firstDate = getDateOfDaysAgo(7)
             }
+            AppConstants.MONTH -> {
+                firstDate = getDateOfDaysAgo(31)
+            }
+            AppConstants.YEAR -> {
+                firstDate = getDateOfDaysAgo(365)
+            }
+            AppConstants.FIVE_YEAR -> {
+                firstDate = getDateOfDaysAgo(1825)
+            }
         }
         viewModel.getRatesBetweenTwoTimeAsync(currentDate,firstDate,currency.code,intent.getStringExtra(AppConstants.BASE))
     }
@@ -170,8 +185,10 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
 
         for(x in 0 until days.size)
         {
-            values.add( treeMap[days[x]].toString().replace("${currency.code}=","").replace("{","").replace("}",""))
+            values.add( treeMap[days[x]].toString().
+                replace("${currency.code}=","").
+                replace("{","").
+                replace("}",""))
         }
-
     }
 }

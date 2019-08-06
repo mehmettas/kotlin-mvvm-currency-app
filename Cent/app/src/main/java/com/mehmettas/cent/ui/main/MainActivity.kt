@@ -13,6 +13,7 @@ import com.mehmettas.cent.data.remote.model.symbol.Currency
 import com.mehmettas.cent.ui.currencybase.CurrencyBaseDialog
 import com.mehmettas.cent.ui.currencydetail.CurrencyDetailActivity
 import com.mehmettas.cent.ui.main.MainAdapter.MainAdapter
+import com.mehmettas.cent.utils.AppConstants
 import com.mehmettas.cent.utils.extensions.getDateOfDaysAgo
 import com.mehmettas.cent.utils.extensions.launchActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -124,7 +125,9 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener,
     }
 
     override fun onItemSelectedListener(currency: Currency) {
-        launchActivity<CurrencyDetailActivity> {  }  // Use Intent extension to easily use intents .
+        launchActivity<CurrencyDetailActivity> {
+            putExtra(AppConstants.CURRENCY_INTENT,currency)
+        }  // Use Intent extension to easily use intents .
     }
 
     override fun whenDialogComplete(selectedBase: String) {

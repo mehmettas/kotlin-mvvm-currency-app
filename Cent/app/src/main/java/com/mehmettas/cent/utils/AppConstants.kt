@@ -13,4 +13,11 @@ object AppConstants {
     const val MONTH = "Month"
     const val YEAR = "Year"
     const val FIVE_YEAR = "5 Year"
+
+    const val CURRENCY_INTENT = "CURRENCY_INTENT"
+
+    const val BLACK = "BLACK"
+    const val BLUE = "BLUE"
+    const val ORANGE = "ORANGE"
+    const val PURPLE = "PURPLE"
 }

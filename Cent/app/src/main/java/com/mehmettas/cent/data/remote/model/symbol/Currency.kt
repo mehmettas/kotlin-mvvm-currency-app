@@ -17,5 +17,7 @@ class Currency(
     @SerializedName("last_modified")
     var lastModified:String,
     var rateValue:String?=null, // Will be set from the actual api after filtering the rate symbols
-    var previousDayValue:String?=null
+    var previousDayValue:String?=null,
+    var percentDifferenceValue:String?=null,
+    var currencyDraweble:String
 ): Serializable

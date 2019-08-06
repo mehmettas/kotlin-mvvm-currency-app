@@ -46,10 +46,22 @@ class MainAdapter(
 
             when(selectedCurrency%AppConstants.DRAWEBLE_AMOUNT)
             {
-                0 -> itemView.ellipseCurrency.setImageResource(R.drawable.ellipse_black)
-                1 -> itemView.ellipseCurrency.setImageResource(R.drawable.ellipse_blue)
-                2 -> itemView.ellipseCurrency.setImageResource(R.drawable.ellipse_orange)
-                3 -> itemView.ellipseCurrency.setImageResource(R.drawable.ellipse_purple)
+                0 -> {
+                    itemView.ellipseCurrency.setImageResource(R.drawable.ellipse_black)
+                    currency.currencyDraweble = AppConstants.BLACK
+                }
+                1 -> {
+                    itemView.ellipseCurrency.setImageResource(R.drawable.ellipse_blue)
+                    currency.currencyDraweble = AppConstants.BLUE
+                }
+                2 -> {
+                    itemView.ellipseCurrency.setImageResource(R.drawable.ellipse_orange)
+                    currency.currencyDraweble = AppConstants.ORANGE
+                }
+                3 -> {
+                    itemView.ellipseCurrency.setImageResource(R.drawable.ellipse_purple)
+                    currency.currencyDraweble = AppConstants.PURPLE
+                }
             }
 
             textCurrencySymbol.text = currency.symbol
@@ -69,6 +81,8 @@ class MainAdapter(
                 textCurrencyUpAndDown.setTextColor(resources.getColor(R.color.rising_color))
                 textCurrencyUpAndDown.text = "+ ${upAndDownPercent.toDouble()}%"
             }
+
+            currency.percentDifferenceValue = upAndDownPercent
 
             itemView.setOnClickListener {
                 listener.onItemSelectedListener(currency)

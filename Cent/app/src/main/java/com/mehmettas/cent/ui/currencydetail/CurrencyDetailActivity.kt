@@ -6,7 +6,6 @@ import com.mehmettas.cent.R
 import com.mehmettas.cent.data.remote.model.symbol.Currency
 import com.mehmettas.cent.ui.base.BaseActivity
 import com.mehmettas.cent.utils.AppConstants
-import com.mehmettas.cent.utils.extensions.trimForBothSides
 import kotlinx.android.synthetic.main.activity_currency_detail.*
 import kotlinx.android.synthetic.main.activity_currency_detail.textCurrencyValue
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -14,9 +13,6 @@ import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
 import com.github.mikephil.charting.data.Entry
 import com.mehmettas.cent.data.remote.model.rate_time_period.TwoDaysWithBase
-import com.mehmettas.cent.utils.extensions.getCurrentDate
-import com.mehmettas.cent.utils.extensions.getDateOfDaysAgo
-import com.mehmettas.cent.utils.extensions.getDaysOftheWeek
 import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
 import com.google.gson.internal.LinkedTreeMap
@@ -32,6 +28,7 @@ import android.graphics.Color
 import com.github.mikephil.charting.utils.Utils
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
+import com.mehmettas.cent.utils.extensions.*
 
 
 class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
@@ -210,52 +207,6 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
                 replace("}","")))
         }
 
-        drawChart(values)
-    }
-
-    private fun drawChart(valuesOfRates:ArrayList<String>)
-    {
-        var chartValues:ArrayList<Entry> = arrayListOf()
-
-        for(x in 0 until valuesOfRates.size)
-        {
-            chartValues.add( Entry(x.toFloat(), "%.1f".format(valuesOfRates[x].toDouble()).toFloat()));
-        }
-
-        val lineDataSet = LineDataSet(chartValues, "")
-        lineDataSet.axisDependency = YAxis.AxisDependency.LEFT
-        lineDataSet.isHighlightEnabled = false
-        lineDataSet.lineWidth = 1F
-        lineDataSet.color = Color.WHITE
-        lineDataSet.setCircleColor(Color.WHITE)
-        lineDataSet.circleRadius = 1.5F
-        lineDataSet.circleHoleRadius = .5F
-        lineDataSet.setDrawHighlightIndicators(true)
-        lineDataSet.valueTextSize = 0F
-        lineDataSet.valueTextColor = Color.WHITE
-
-        val lineData = LineData(lineDataSet)
-
-        dataChart.description.textSize =12F
-        dataChart.setDrawMarkers(true)
-        dataChart.xAxis.position = XAxis.XAxisPosition.BOTH_SIDED
-        dataChart.animateXY(500, 500)
-        dataChart.xAxis.isGranularityEnabled = true
-        dataChart.xAxis.granularity = 1.0F
-        dataChart.description.isEnabled = false
-        dataChart.axisLeft.isEnabled = false
-        dataChart.axisRight.axisLineWidth = 0F
-        dataChart.axisRight.axisLineColor = Color.WHITE
-        dataChart.axisRight.setDrawAxisLine(false)
-        dataChart.axisRight.textColor = Color.WHITE
-        dataChart.axisRight.setDrawGridLines(false)
-        dataChart.axisLeft.setDrawGridLines(false)
-        dataChart.xAxis.setDrawGridLines(false)
-        dataChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
-        dataChart.xAxis.axisLineColor = Color.WHITE
-        dataChart.xAxis.isEnabled = false
-        dataChart.legend.isEnabled = false
-        dataChart.data = lineData
-
+        drawChart(dataChart,values)
     }
 }

@@ -44,10 +44,30 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
     {
         when(itemType)
         {
-            AppConstants.WEEK -> clWeek.setBackgroundResource(R.drawable.img_menu_selected)
-            AppConstants.MONTH -> clMonth.setBackgroundResource(R.drawable.img_menu_selected)
-            AppConstants.YEAR -> clYear.setBackgroundResource(R.drawable.img_menu_selected)
-            AppConstants.FIVE_YEAR -> clFiveYear.setBackgroundResource(R.drawable.img_menu_selected)
+            AppConstants.WEEK -> {
+                clWeek.setBackgroundResource(R.drawable.img_menu_selected)
+                clMonth.setBackgroundResource(0)
+                clYear.setBackgroundResource(0)
+                clFiveYear.setBackgroundResource(0)
+            }
+            AppConstants.MONTH -> {
+                clMonth.setBackgroundResource(R.drawable.img_menu_selected)
+                clYear.setBackgroundResource(0)
+                clFiveYear.setBackgroundResource(0)
+                clWeek.setBackgroundResource(0)
+            }
+            AppConstants.YEAR -> {
+                clYear.setBackgroundResource(R.drawable.img_menu_selected)
+                clMonth.setBackgroundResource(0)
+                clFiveYear.setBackgroundResource(0)
+                clWeek.setBackgroundResource(0)
+            }
+            AppConstants.FIVE_YEAR -> {
+                clFiveYear.setBackgroundResource(R.drawable.img_menu_selected)
+                clYear.setBackgroundResource(0)
+                clMonth.setBackgroundResource(0)
+                clWeek.setBackgroundResource(0)
+            }
         }
 
     }

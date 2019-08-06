@@ -11,8 +11,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.google.gson.JsonParser
 import com.mehmettas.cent.data.remote.model.symbol.Currency
 import com.mehmettas.cent.ui.currencybase.CurrencyBaseDialog
+import com.mehmettas.cent.ui.currencydetail.CurrencyDetailActivity
 import com.mehmettas.cent.ui.main.MainAdapter.MainAdapter
 import com.mehmettas.cent.utils.extensions.getDateOfDaysAgo
+import com.mehmettas.cent.utils.extensions.launchActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener, CurrencyBaseDialog.DialogReturnedBackListener {
@@ -122,6 +124,7 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener,
     }
 
     override fun onItemSelectedListener(currency: Currency) {
+        launchActivity<CurrencyDetailActivity> {  }
     }
 
     override fun whenDialogComplete(selectedBase: String) {

@@ -31,17 +31,15 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
     {
         when(currency.currencyDraweble)
         {
-            AppConstants.PURPLE -> ellipse_logo.setBackgroundResource(R.drawable.ellipse_logo_purple)
-            AppConstants.BLUE -> ellipse_logo.setBackgroundResource(R.drawable.ellipse_logo_blue)
-            AppConstants.BLACK -> ellipse_logo.setBackgroundResource(R.drawable.ellipse_logo_black)
-            AppConstants.ORANGE -> ellipse_logo.setBackgroundResource(R.drawable.ellipse_orange)
-
-
+            AppConstants.PURPLE -> ellipse_logo.setImageResource(R.drawable.ellipse_logo_purple)
+            AppConstants.BLUE -> ellipse_logo.setImageResource(R.drawable.ellipse_logo_blue)
+            AppConstants.BLACK -> ellipse_logo.setImageResource(R.drawable.ellipse_logo_black)
+            AppConstants.ORANGE -> ellipse_logo.setImageResource(R.drawable.ellipse_logo_orange)
         }
 
         textBase.text = currency.code
         textLogoBaseCode.text = currency.symbol
-        textCurrencyValue.text = "%.3f".format(trimForBothSides(currency.rateValue,1,1))
+        textCurrencyValue.text = "%.3f".format(trimForBothSides(currency.rateValue,1,1).toDouble())
         configureUpAndDown(currency.percentDifferenceValue)
     }
 

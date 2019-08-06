@@ -8,4 +8,9 @@ object AppConstants {
     const val ALL_CURRENCIES = "ALL_CURRENCIES"
     const val REQUEST_TIMEOUT: Long = 60
     const val DRAWEBLE_AMOUNT = 4
+
+    const val WEEK = "Week"
+    const val MONTH = "Month"
+    const val YEAR = "Year"
+    const val FIVE_YEAR = "5 Year"
 }

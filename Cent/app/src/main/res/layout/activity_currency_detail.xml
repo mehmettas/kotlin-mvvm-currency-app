@@ -119,7 +119,6 @@
                 app:layout_constraintTop_toTopOf="@id/clWeek"
                 app:layout_constraintBottom_toBottomOf="@id/clWeek"
                 app:layout_constraintStart_toEndOf="@id/clWeek"
-                android:background="@drawable/img_menu_selected"
                 android:layout_height="24dp">
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -144,7 +143,6 @@
                 app:layout_constraintTop_toTopOf="@id/clMonth"
                 app:layout_constraintBottom_toBottomOf="@id/clMonth"
                 app:layout_constraintStart_toEndOf="@id/clMonth"
-                android:background="@drawable/img_menu_selected"
                 android:layout_height="24dp">
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -169,7 +167,6 @@
                 app:layout_constraintTop_toTopOf="@id/clYear"
                 app:layout_constraintBottom_toBottomOf="@id/clYear"
                 app:layout_constraintStart_toEndOf="@id/clYear"
-                android:background="@drawable/img_menu_selected"
                 android:layout_height="24dp">
 
             <androidx.appcompat.widget.AppCompatTextView

@@ -12,22 +12,33 @@ import kotlinx.android.synthetic.main.activity_currency_detail.textCurrencyValue
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
+import com.github.mikephil.charting.data.Entry
 import com.mehmettas.cent.data.remote.model.rate_time_period.TwoDaysWithBase
 import com.mehmettas.cent.utils.extensions.getCurrentDate
 import com.mehmettas.cent.utils.extensions.getDateOfDaysAgo
 import com.mehmettas.cent.utils.extensions.getDaysOftheWeek
 import com.google.gson.reflect.TypeToken
-import org.json.JSONObject
 import com.google.gson.Gson
-import com.google.gson.JsonParser
 import com.google.gson.internal.LinkedTreeMap
-import org.json.JSONArray
-
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
+import android.graphics.Color.DKGRAY
+import androidx.core.content.ContextCompat
+import android.graphics.drawable.Drawable
+import com.github.mikephil.charting.utils.Utils.getSDKInt
+import android.graphics.DashPathEffect
+import com.github.mikephil.charting.data.LineDataSet
+import android.graphics.Color
+import com.github.mikephil.charting.utils.Utils
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.components.YAxis
 
 class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
     private val viewModel by viewModel<CurrencyDetailViewModel>()
     lateinit var currency:Currency
-    val anim = RotateAnimation(0f, 350f, 15f, 15f)
+
+    var yAxisValues = ArrayList<String>()
+    var xAxisValues = ArrayList<Int>()
 
     override val layoutId: Int?
         get() = R.layout.activity_currency_detail
@@ -55,6 +66,9 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
         textLogoBaseCode.text = currency.symbol
         textCurrencyValue.text = "%.3f".format(trimForBothSides(currency.rateValue,1,1).toDouble())
         configureUpAndDown(currency.percentDifferenceValue)
+
+        dataChart.setTouchEnabled(true)
+        dataChart.setPinchZoom(true)
     }
 
     override fun initListener() {
@@ -185,10 +199,49 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
 
         for(x in 0 until days.size)
         {
-            values.add( treeMap[days[x]].toString().
+            values.add( (treeMap[days[x]].toString().
                 replace("${currency.code}=","").
                 replace("{","").
-                replace("}",""))
+                replace("}","")))
         }
+
+        drawChart(values)
+    }
+
+    private fun drawChart(valuesOfRates:ArrayList<String>)
+    {
+        var chartValues:ArrayList<Entry> = arrayListOf()
+
+        for(x in 0 until valuesOfRates.size)
+        {
+            chartValues.add( Entry(x.toFloat(), valuesOfRates[x].toFloat()));
+        }
+
+        val lineDataSet = LineDataSet(chartValues, "Oil Price")
+        lineDataSet.setAxisDependency(YAxis.AxisDependency.LEFT)
+        lineDataSet.setHighlightEnabled(true)
+        lineDataSet.lineWidth = 2F
+        lineDataSet.color = Color.WHITE
+        lineDataSet.setCircleColor(Color.WHITE)
+        lineDataSet.setCircleRadius(6F)
+        lineDataSet.setCircleHoleRadius(3F)
+        lineDataSet.setDrawHighlightIndicators(true)
+        lineDataSet.setHighLightColor(Color.RED)
+        lineDataSet.setValueTextSize(12F)
+        lineDataSet.setValueTextColor(Color.WHITE)
+
+        val lineData = LineData(lineDataSet)
+
+        dataChart.getDescription().setText("Price in last 12 days")
+        dataChart.getDescription().setTextSize(12F)
+        dataChart.setDrawMarkers(true)
+       // dataChart.setMarker(markerView(context))
+        dataChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTH_SIDED)
+        dataChart.animateY(1000)
+        dataChart.getXAxis().setGranularityEnabled(true)
+        dataChart.getXAxis().setGranularity(1.0f)
+        dataChart.getXAxis().setLabelCount(lineDataSet.getEntryCount())
+        dataChart.setData(lineData)
+
     }
 }

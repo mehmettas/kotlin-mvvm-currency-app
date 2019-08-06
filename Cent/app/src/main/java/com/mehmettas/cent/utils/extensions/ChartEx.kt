@@ -7,7 +7,6 @@ import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import kotlinx.android.synthetic.main.activity_currency_detail.*
 
 fun drawChart(dataChart:LineChart,valuesOfRates:ArrayList<String>)
 {

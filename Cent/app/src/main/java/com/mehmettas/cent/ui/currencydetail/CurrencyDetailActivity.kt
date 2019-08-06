@@ -1,7 +1,5 @@
 package com.mehmettas.cent.ui.currencydetail
 
-import android.view.animation.RotateAnimation
-import com.bumptech.glide.load.resource.bitmap.Rotate
 import com.mehmettas.cent.R
 import com.mehmettas.cent.data.remote.model.symbol.Currency
 import com.mehmettas.cent.ui.base.BaseActivity
@@ -9,34 +7,15 @@ import com.mehmettas.cent.utils.AppConstants
 import kotlinx.android.synthetic.main.activity_currency_detail.*
 import kotlinx.android.synthetic.main.activity_currency_detail.textCurrencyValue
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import android.view.animation.Animation
-import android.view.animation.LinearInterpolator
-import com.github.mikephil.charting.data.Entry
 import com.mehmettas.cent.data.remote.model.rate_time_period.TwoDaysWithBase
-import com.google.gson.reflect.TypeToken
 import com.google.gson.Gson
 import com.google.gson.internal.LinkedTreeMap
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
-import android.graphics.Color.DKGRAY
-import androidx.core.content.ContextCompat
-import android.graphics.drawable.Drawable
-import com.github.mikephil.charting.utils.Utils.getSDKInt
-import android.graphics.DashPathEffect
-import com.github.mikephil.charting.data.LineDataSet
-import android.graphics.Color
-import com.github.mikephil.charting.utils.Utils
-import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.components.YAxis
 import com.mehmettas.cent.utils.extensions.*
 
 
 class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
     private val viewModel by viewModel<CurrencyDetailViewModel>()
     lateinit var currency:Currency
-
-    var yAxisValues = ArrayList<String>()
-    var xAxisValues = ArrayList<Int>()
 
     override val layoutId: Int?
         get() = R.layout.activity_currency_detail

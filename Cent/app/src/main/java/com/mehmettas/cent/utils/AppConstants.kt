@@ -20,4 +20,6 @@ object AppConstants {
     const val BLUE = "BLUE"
     const val ORANGE = "ORANGE"
     const val PURPLE = "PURPLE"
+
+    const val BASE = "BASE"
 }

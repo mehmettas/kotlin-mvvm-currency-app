@@ -16,6 +16,13 @@ import com.mehmettas.cent.data.remote.model.rate_time_period.TwoDaysWithBase
 import com.mehmettas.cent.utils.extensions.getCurrentDate
 import com.mehmettas.cent.utils.extensions.getDateOfDaysAgo
 import com.mehmettas.cent.utils.extensions.getDaysOftheWeek
+import com.google.gson.reflect.TypeToken
+import org.json.JSONObject
+import com.google.gson.Gson
+import com.google.gson.JsonParser
+import com.google.gson.internal.LinkedTreeMap
+import org.json.JSONArray
+
 
 class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
     private val viewModel by viewModel<CurrencyDetailViewModel>()
@@ -134,7 +141,7 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
                 firstDate = getDateOfDaysAgo(7)
             }
         }
-        viewModel.getRatesBetweenTwoTimeAsync(currentDate,firstDate,currency.code,currency.code)
+        viewModel.getRatesBetweenTwoTimeAsync(currentDate,firstDate,currency.code,intent.getStringExtra(AppConstants.BASE))
     }
 
     private fun configureUpAndDown(upAndDownPercent:String?)
@@ -153,5 +160,20 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
 
     override fun twoTimePeriodSuccess(data: TwoDaysWithBase?) {
         val x = 0
+
+        val getrow = data?.rates
+        val t = getrow as LinkedTreeMap<*, *>
+        val objectMap = Gson().toJsonTree(t).getAsJsonObject()
+
+        val iterator = objectMap.keySet().iterator()
+
+        val days:ArrayList<String> = arrayListOf()
+        while (iterator.hasNext()) {
+            days.add(iterator.next() as String)
+        }
+
+        val name = t["name"].toString()
+
+
     }
 }

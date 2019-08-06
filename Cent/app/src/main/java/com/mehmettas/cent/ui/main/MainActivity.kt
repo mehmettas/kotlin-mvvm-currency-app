@@ -127,6 +127,7 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener,
     override fun onItemSelectedListener(currency: Currency) {
         launchActivity<CurrencyDetailActivity> {
             putExtra(AppConstants.CURRENCY_INTENT,currency)
+            putExtra(AppConstants.BASE,textCurrentBase.text)
         }  // Use Intent extension to easily use intents .
     }
 

@@ -33,6 +33,7 @@ import com.github.mikephil.charting.utils.Utils
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 
+
 class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
     private val viewModel by viewModel<CurrencyDetailViewModel>()
     lateinit var currency:Currency
@@ -214,34 +215,47 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
 
         for(x in 0 until valuesOfRates.size)
         {
-            chartValues.add( Entry(x.toFloat(), valuesOfRates[x].toFloat()));
+            chartValues.add( Entry(x.toFloat(), "%.1f".format(valuesOfRates[x].toDouble()).toFloat()));
         }
 
-        val lineDataSet = LineDataSet(chartValues, "Oil Price")
-        lineDataSet.setAxisDependency(YAxis.AxisDependency.LEFT)
-        lineDataSet.setHighlightEnabled(true)
-        lineDataSet.lineWidth = 2F
+        val lineDataSet = LineDataSet(chartValues, "")
+        lineDataSet.axisDependency = YAxis.AxisDependency.LEFT
+        lineDataSet.isHighlightEnabled = true
+        lineDataSet.lineWidth = 1F
         lineDataSet.color = Color.WHITE
         lineDataSet.setCircleColor(Color.WHITE)
-        lineDataSet.setCircleRadius(6F)
-        lineDataSet.setCircleHoleRadius(3F)
+        lineDataSet.circleRadius = 1.5F
+        lineDataSet.circleHoleRadius = .5F
         lineDataSet.setDrawHighlightIndicators(true)
-        lineDataSet.setHighLightColor(Color.RED)
-        lineDataSet.setValueTextSize(12F)
-        lineDataSet.setValueTextColor(Color.WHITE)
+        lineDataSet.valueTextSize = 0F
+        lineDataSet.valueTextColor = Color.WHITE
 
         val lineData = LineData(lineDataSet)
 
-        dataChart.getDescription().setText("Price in last 12 days")
-        dataChart.getDescription().setTextSize(12F)
+        dataChart.description.textSize =12F
         dataChart.setDrawMarkers(true)
-       // dataChart.setMarker(markerView(context))
-        dataChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTH_SIDED)
+        dataChart.xAxis.position = XAxis.XAxisPosition.BOTH_SIDED
         dataChart.animateY(1000)
-        dataChart.getXAxis().setGranularityEnabled(true)
-        dataChart.getXAxis().setGranularity(1.0f)
-        dataChart.getXAxis().setLabelCount(lineDataSet.getEntryCount())
-        dataChart.setData(lineData)
+        dataChart.xAxis.isGranularityEnabled = true
+        dataChart.xAxis.granularity = 1.0F
+        dataChart.description.isEnabled = false
+
+        dataChart.axisLeft.isEnabled = false
+        dataChart.axisRight.axisLineWidth = 0F
+        dataChart.axisRight.axisLineColor = Color.WHITE
+        dataChart.axisRight.setDrawAxisLine(false)
+
+
+        dataChart.axisRight.setDrawGridLines(false)
+        dataChart.axisLeft.setDrawGridLines(false)
+        dataChart.xAxis.setDrawGridLines(false)
+
+        dataChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
+        dataChart.xAxis.axisLineColor = Color.WHITE
+
+        dataChart.xAxis.isEnabled = false
+
+        dataChart.data = lineData
 
     }
 }

@@ -189,7 +189,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:id="@+id/dataChart"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_margin="20dp"
+                android:layout_marginTop="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_width="0dp"
                 android:layout_height="0dp"/>

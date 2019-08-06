@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_currency_detail.textCurrencyValue
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
+import com.mehmettas.cent.data.remote.model.rate_time_period.TwoDaysWithBase
 import com.mehmettas.cent.utils.extensions.getCurrentDate
 import com.mehmettas.cent.utils.extensions.getDateOfDaysAgo
 import com.mehmettas.cent.utils.extensions.getDaysOftheWeek
@@ -133,6 +134,7 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
                 firstDate = getDateOfDaysAgo(7)
             }
         }
+        viewModel.getRatesBetweenTwoTimeAsync(currentDate,firstDate,currency.code,currency.code)
     }
 
     private fun configureUpAndDown(upAndDownPercent:String?)
@@ -147,5 +149,9 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
             textRisingDecreasing.setTextColor(resources.getColor(R.color.rising_color))
             textRisingDecreasing.text = "+ ${upAndDownPercent?.toDouble()}%"
         }
+    }
+
+    override fun twoTimePeriodSuccess(data: TwoDaysWithBase?) {
+        val x = 0
     }
 }

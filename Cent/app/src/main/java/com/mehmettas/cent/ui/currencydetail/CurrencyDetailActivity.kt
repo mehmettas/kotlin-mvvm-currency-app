@@ -70,6 +70,10 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
 
         dataChart.setTouchEnabled(true)
         dataChart.setPinchZoom(true)
+
+        initMenuItemBackground(AppConstants.MONTH)
+        createXAxisData(AppConstants.MONTH)
+        createYAxisData(AppConstants.MONTH)
     }
 
     override fun initListener() {
@@ -220,7 +224,7 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
 
         val lineDataSet = LineDataSet(chartValues, "")
         lineDataSet.axisDependency = YAxis.AxisDependency.LEFT
-        lineDataSet.isHighlightEnabled = true
+        lineDataSet.isHighlightEnabled = false
         lineDataSet.lineWidth = 1F
         lineDataSet.color = Color.WHITE
         lineDataSet.setCircleColor(Color.WHITE)
@@ -235,7 +239,7 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
         dataChart.description.textSize =12F
         dataChart.setDrawMarkers(true)
         dataChart.xAxis.position = XAxis.XAxisPosition.BOTH_SIDED
-        dataChart.animateY(1000)
+        dataChart.animateXY(500, 500)
         dataChart.xAxis.isGranularityEnabled = true
         dataChart.xAxis.granularity = 1.0F
         dataChart.description.isEnabled = false
@@ -250,6 +254,7 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
         dataChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
         dataChart.xAxis.axisLineColor = Color.WHITE
         dataChart.xAxis.isEnabled = false
+        dataChart.legend.isEnabled = false
         dataChart.data = lineData
 
     }

@@ -7,8 +7,6 @@ import com.mehmettas.cent.utils.AppConstants
 import com.mehmettas.cent.utils.extensions.trimForBothSides
 import kotlinx.android.synthetic.main.activity_currency_detail.*
 import kotlinx.android.synthetic.main.activity_currency_detail.textCurrencyValue
-import kotlinx.android.synthetic.main.layout_item_currency.*
-import kotlinx.android.synthetic.main.layout_item_currency.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
@@ -37,7 +35,7 @@ class CurrencyDetailActivity: BaseActivity(), ICurrencyDetailNavigator {
             AppConstants.ORANGE -> ellipse_logo.setImageResource(R.drawable.ellipse_logo_orange)
         }
 
-        textBase.text = currency.code
+        textBase.text = currency.currencyName
         textLogoBaseCode.text = currency.symbol
         textCurrencyValue.text = "%.3f".format(trimForBothSides(currency.rateValue,1,1).toDouble())
         configureUpAndDown(currency.percentDifferenceValue)

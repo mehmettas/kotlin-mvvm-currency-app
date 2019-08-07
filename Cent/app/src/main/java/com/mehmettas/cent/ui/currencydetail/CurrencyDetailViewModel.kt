@@ -16,17 +16,14 @@ class CurrencyDetailViewModel(dataManager:DataManager): BaseViewModel<ICurrencyD
                                     symbol:String,
                                     base:String)
     {
-        getNavigator().showLoading()
         GlobalScope.launch(Dispatchers.Main) {
             when(val result: ResultWrapper<TwoDaysWithBase> = withContext(Dispatchers.IO){dataManager.getRatesBetweenTwoTimeAsync(
                 endDate,startDate,symbol,base
             )}){
                 is ResultWrapper.Success -> {
-                    getNavigator().hideLoading()
                     getNavigator().twoTimePeriodSuccess(result.data)
                 }
                 is ResultWrapper.Error -> {
-                    getNavigator().hideLoading()
                     getNavigator().onError(result.exception.message)
                 }
             }

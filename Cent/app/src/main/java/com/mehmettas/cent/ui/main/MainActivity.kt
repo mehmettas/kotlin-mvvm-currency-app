@@ -59,7 +59,7 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener,
             latestRates = it
             textCurrentBase.text = latestRates.base
             formSymbolApi(latestRates,true)
-            viewModel.getRatesWithDateAsync(getDateOfDaysAgo(1))
+            viewModel.getRatesWithDateAsync(getDateOfDaysAgo(3))
         })
 
         viewModel.latestRatesWithDate.observe(this, Observer {

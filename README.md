@@ -24,26 +24,18 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://www.linkedin.com/in/mehmettass">
     <img src="cent.png" alt="" width="120" height="120">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">Andoid MVVM Currency App with latest Arhitecture Compenents</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    An application where I have implemented the technologies that I learned to practise more and more!
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
-  </p>
+    <a href="play link">Download the Project</a>
+    .
 </p>
-
 
 
 <!-- TABLE OF CONTENTS -->

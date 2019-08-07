@@ -28,7 +28,7 @@
     <img src="cent.png" alt="" width="120" height="120">
   </a>
 
-  <h3 align="center">Andoid MVVM Currency App with latest Arhitecture Compenents</h3>
+  <h3 align="center">Android MVVM Currency App with latest Arhitecture Compenents</h3>
 
   <p align="center">
     An application where I have implemented the technologies that I learned to practise more and more!

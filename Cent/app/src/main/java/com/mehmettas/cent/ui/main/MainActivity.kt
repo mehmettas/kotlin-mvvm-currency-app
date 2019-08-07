@@ -51,6 +51,7 @@ class MainActivity: BaseActivity(), IMainNavigator,MainAdapter.MainListListener,
             CurrencyBaseDialog.newInstance(allCurrencies) // create new instance with the arguments to be our model class.
                 .show(supportFragmentManager.beginTransaction(),"")
         }
+
     }
 
     private fun observeViewModel() // Observe the data that we requested

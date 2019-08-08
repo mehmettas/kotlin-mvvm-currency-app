@@ -47,18 +47,6 @@ While developing this project, I focused on using all the benefits of Kotlin and
 * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
 * [Gson - Retrofit](https://square.github.io/retrofit/)
 
-
-<!-- CONTACT -->
-## Contact
-
-Mehmet Taş - [@twitter](https://twitter.com/tasmehmet_) - m_tas@outlook.com
-
-Project Link: [https://github.com/mehmettas/kotlin-mvvm-currency-app](https://github.com/mehmettas/kotlin-mvvm-currency-app)
-
-Portfolio : [https://mehmettas.github.io/](https://mehmettas.github.io/)
-
-LinkedIn : [https://www.linkedin.com/in/mehmettass/](https://www.linkedin.com/in/mehmettass/)
-
 <!-- LICENSE -->
 ## License
 
@@ -75,6 +63,17 @@ LinkedIn : [https://www.linkedin.com/in/mehmettass/](https://www.linkedin.com/in
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+
+<!-- CONTACT -->
+## Contact
+
+Mehmet Taş - [@twitter](https://twitter.com/tasmehmet_) - m_tas@outlook.com
+
+Project Link: [https://github.com/mehmettas/kotlin-mvvm-currency-app](https://github.com/mehmettas/kotlin-mvvm-currency-app)
+
+Portfolio : [https://mehmettas.github.io/](https://mehmettas.github.io/)
+
+LinkedIn : [https://www.linkedin.com/in/mehmettass/](https://www.linkedin.com/in/mehmettass/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

@@ -59,6 +59,9 @@ Mehmet Taş - [@twitter](https://twitter.com/tasmehmet_) - m_tas@outlook.com
 
 Project Link: [https://github.com/mehmettas/kotlin-mvvm-currency-app](https://github.com/mehmettas/kotlin-mvvm-currency-app)
 
+Portfolio : [https://mehmettas.github.io/](https://mehmettas.github.io/)
+
+LinkedIn : [https://www.linkedin.com/in/mehmettass/](https://www.linkedin.com/in/mehmettass/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

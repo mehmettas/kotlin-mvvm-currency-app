@@ -55,7 +55,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Mehmet Taş - [@your_twitter](https://twitter.com/tasmehmet_) - m_tas@outlook.com
+Mehmet Taş - [@twitter](https://twitter.com/tasmehmet_) - m_tas@outlook.com
 
 Project Link: [https://github.com/mehmettas/kotlin-mvvm-currency-app](https://github.com/mehmettas/kotlin-mvvm-currency-app)
 

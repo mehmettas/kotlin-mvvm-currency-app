@@ -26,21 +26,21 @@
 
 [![Product Name Screen Shot][product-screenshot]]()
 
-Cent, gives you the ability to view all the currency rates by daily datas based on specific currency. When you first open up the application, you'll see all world currency rates against one currency. You could change this base currency on the top right base button. You could easily go to the detail of the selected currency and have the detailed data with line chart in the intervals of: last one week, one month, one year and five year.
+Cent gives you the ability to view all the currency rates by daily data based on a specific currency. When you first open up the application, you'll see all world currency rates against one currency. You could change this base currency on the top right base button. You could easily go to the detail of the selected currency and have the detailed data with a line chart in the intervals of last one week, one month, one year and five years.
 
 While developing this project, I have used [Foreign exchange rates API](https://exchangeratesapi.io/) where I can retrieve the latest rates data based on the parameters such like; time interval, against to a base currency, with symbols(currency) and the data. The manipulation of the data made by me. I did some calculations that the API doesn't provide. 
 
-Kotlin - Mvvm : get conformtable
-Kotlin Coroutines for asyncgronus programming
-Retrofit for Htttp request
+Kotlin - Mvvm: get comfortable
+Kotlin Coroutines for asynchronous programming
+Retrofit for Http request
 Gson
-LiveData is used to communicate information back from viewmodel - Android Architecture
+LiveData is used to communicate information back from ViewModel - Android Architecture
 Koin - used to add dependencies to our classes
 
 
 ### Built With
 
-While developing this project, I focused on using all the benefits of Kotlin and appliying it by following the software architecturel pattern:  MVVM. I tried to decrease the dependencies between my classes by appliying Kotlin-Koin and for asynchronous programming I used Kotlin-Coroutines. After all dealing with all this data, I used one of the android architecture compenent "LiveData" to make my application lifecycle aware. 
+While developing this project, I focused on using all the benefits of Kotlin and applying it by following the software architectural pattern:  MVVM. I tried to decrease the dependencies between my classes by applying Kotlin-Koin and for asynchronous programming I used Kotlin-Coroutines. After all, dealing with all this data, I used one of the android architecture component "LiveData" to make my application lifecycle aware. 
 
 * [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)
 * [Koin](https://github.com/InsertKoinIO/koin)

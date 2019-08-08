@@ -46,6 +46,7 @@ While developing this project, I focused on using all the benefits of Kotlin and
 * [Koin](https://github.com/InsertKoinIO/koin)
 * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
 * [Gson - Retrofit](https://square.github.io/retrofit/)
+* [Kotlin Extensions](https://kotlinlang.org/docs/reference/extensions.html)
 
 <!-- LICENSE -->
 ## License

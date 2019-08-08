@@ -27,7 +27,6 @@ fun getDaysOftheWeek(): ArrayList<String> {
 
     val days = arrayListOf<String>()
     val dateFormat = DateFormatSymbols()
-    //val weekdays = dateFormat.getWeekdays()
     val weekdays = dateFormat.shortWeekdays
     for (weekday in weekdays) {
         days.add(weekday)

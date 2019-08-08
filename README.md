@@ -30,14 +30,6 @@ Cent gives you the ability to view all the currency rates by daily data based on
 
 While developing this project, I have used [Foreign exchange rates API](https://exchangeratesapi.io/) where I can retrieve the latest rates data based on the parameters such like; time interval, against to a base currency, with symbols(currency) and the data. The manipulation of the data made by me. I did some calculations that the API doesn't provide. 
 
-Kotlin - Mvvm: get comfortable
-Kotlin Coroutines for asynchronous programming
-Retrofit for Http request
-Gson
-LiveData is used to communicate information back from ViewModel - Android Architecture
-Koin - used to add dependencies to our classes
-
-
 ### Built With
 
 While developing this project, I focused on using all the benefits of Kotlin and applying it by following the software architectural pattern:  MVVM. I tried to decrease the dependencies between my classes by applying Kotlin-Koin and for asynchronous programming I used Kotlin-Coroutines. After all, dealing with all this data, I used one of the android architecture component "LiveData" to make my application lifecycle aware. 

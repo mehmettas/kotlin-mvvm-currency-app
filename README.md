@@ -59,8 +59,6 @@
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]]()
- 
-There are many repositories on the github with great application ideas and code design patterns applied. After looping through all this repos and by the time that I become more comfortable with kotlin & mvvm and some of the architecture components of the Android, I decided to develop an application that demonstrates the things that I learned in duration. 
 
 Cent, gives you the ability to view all the currency rates by daily datas based on specific currency. When you first open up the application, you'll see all world currency rates against one currency. You could change this base currency on the top right base button. You could easily go to the detail of the selected currency and have the detailed data with line chart in the intervals of: last one week, one month, one year and five year.
 

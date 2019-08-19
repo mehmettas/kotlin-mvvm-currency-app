@@ -93,7 +93,7 @@ class MainAdapter(
     private fun configureUpDownText(rateValue:Double,previousDayValue:Double): String
     {
         var percentDifference = ((rateValue - previousDayValue)/rateValue)*100
-        return "%.3f".format(percentDifference)
+        return (Math.round(percentDifference * 10.0) / 10.0).toString()
     }
 
     interface MainListListener{

@@ -14,7 +14,7 @@ fun drawChart(dataChart:LineChart,valuesOfRates:ArrayList<String>)
 
     for(x in 0 until valuesOfRates.size)
     {
-        chartValues.add( Entry(x.toFloat(), "%.1f".format(valuesOfRates[x].toDouble()).toFloat()));
+        chartValues.add( Entry(x.toFloat(), (Math.round(valuesOfRates[x].toDouble() * 100.0) / 100.0).toFloat()));
     }
 
     val lineDataSet = LineDataSet(chartValues, "")

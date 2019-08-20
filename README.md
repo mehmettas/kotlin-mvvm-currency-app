@@ -11,7 +11,7 @@
   <p align="center">
     An application where I have implemented the technologies that I learned to practise more and more!
     <br />
-    <a href="play link">Download the Project</a>
+    <a href="https://play.google.com/store/apps/details?id=com.mehmettas.cent">Download the Project</a>
     .
 </p>
 
